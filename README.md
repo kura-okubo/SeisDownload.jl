@@ -29,4 +29,9 @@ Then from the Julia command prompt:
 You can download data using `seisdownload`:
 >seisdownload(network, station, location, channels, datacenter, servername, starttime, endtime, save\_time\_unit [s], "outputfilename")
 
-more information; see `EXAMPLE` directory.
+to run the example script:
+
+  1. cd to `EXAMPLE/Download_BP`
+  2. type `sh run_downloadsctipt.sh`
+
+More information; see `EXAMPLE` directory.
