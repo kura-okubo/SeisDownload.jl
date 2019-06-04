@@ -246,9 +246,9 @@ uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
 
 [[MPI]]
 deps = ["BinDeps", "Compat", "Distributed", "Libdl", "LinearAlgebra", "Printf", "Random", "Statistics", "Test"]
-git-tree-sha1 = "3f587ce1c67cbc10f10039a917d47205fc6d10ab"
+git-tree-sha1 = "b932f8e7115a60208692d474c45d5d6fcea10659"
 uuid = "da04e1cc-30fd-572f-bb4f-1f8673147195"
-version = "0.8.0"
+version = "0.7.2"
 
 [[MacroTools]]
 deps = ["CSTParser", "Compat", "DataStructures", "Test"]
