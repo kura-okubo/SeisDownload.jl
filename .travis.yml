@@ -18,7 +18,7 @@ cache:
   - $HOME/.ccache
   - $HOME/.julia/registries # can we cache all of .julia?
 env:
-  - MPI_IMPL=mpich
+  #- MPI_IMPL=mpich
   - MPI_IMPL=openmpi
 before_install:
   - sh ./conf/travis-install-mpi.sh $MPI_IMPL
@@ -39,6 +39,8 @@ jobs:
       script:
           - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
                                                Pkg.instantiate();
-                                               Pkg.build("SeisDownload")'
+                                               Pkg.build("SeisDownload")
+                                               Pkg.build("SeisIO")
+                                               Pkg.build("Noise")'
           - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
       after_success: skip
