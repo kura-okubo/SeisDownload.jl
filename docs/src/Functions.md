@@ -1,0 +1,5 @@
+# SeisDownload.jl
+
+```@docs
+seisdownload
+```
