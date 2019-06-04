@@ -10,6 +10,12 @@ matrix:
   allow_failures:
     - julia: nightly
   fast_finish: true
+
+before_install:
+  - export CC=mpicc
+  - export FC=mpif90
+  - export OMPI_MCA_btl=self,tcp
+
 notifications:
   email: false
 after_success:
