@@ -39,13 +39,8 @@ jobs:
       script:
           - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
                                                Pkg.instantiate();
-<<<<<<< HEAD
                                                Pkg.build("SeisDownload");
                                                Pkg.build("SeisIO");
-=======
-                                               Pkg.build("SeisDownload")
-                                               Pkg.build("SeisIO")
->>>>>>> b21e24fc5229113ab8e227176b9da9f5efbc9b69
                                                Pkg.build("Noise")'
           - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
       after_success: skip
