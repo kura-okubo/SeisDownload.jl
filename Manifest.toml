@@ -420,7 +420,7 @@ uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 deps = ["Blosc", "Compat", "DSP", "Dates", "DelimitedFiles", "FFTW", "Glob", "HTTP", "LightXML", "LinearAlgebra", "Logging", "Polynomials", "Printf", "Random", "Sockets", "Statistics", "Test"]
 git-tree-sha1 = "ff232ba80f808754c645f3ff48ff92ccda027659"
 repo-rev = "master"
-repo-url = "https://github.com/kura-okubo/SeisIO.jl"
+repo-url = "https://github.com/kura-okubo/SeisIO.jl.git"
 uuid = "b372bb87-02dd-52bb-bcf6-c30dd83fd342"
 version = "0.2.0"
 
