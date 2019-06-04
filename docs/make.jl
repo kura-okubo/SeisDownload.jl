@@ -14,7 +14,7 @@ makedocs(
     authors="kurama",
 )
 
-deploydocs(;
+deploydocs(
     repo="github.com/kura-okubo/SeisDownload.jl",
     target = "build",
     deps   = nothing,
