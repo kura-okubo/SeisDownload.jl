@@ -30,5 +30,6 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
     # download data
     @test 0 == seisdownload(network, station, location, channels, datacenter, src, starttime, endtime, float(CC_time_unit), fopath;
                 pre_filt=pre_filt, downsample_fs=float(downsample_fs), IsRemoveStationXML=true)
+    rm(fopath)
 
 end
