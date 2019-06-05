@@ -33,8 +33,9 @@ jobs:
     - stage: Documentation
       julia: 1.1
       script:
-      
-         - julia --project=docs/ -e 'using Pkg; Pkg.clone("https://github.com/tclements/Noise.jl"); Pkg.build("Noise"); Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate(); Pkg.build("SeisDownload")'
+            - julia --project=docs/ -e 'using Pkg;
+            #Pkg.clone("https://github.com/tclements/Noise.jl"); Pkg.build("Noise"); 
+            Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate(); Pkg.build("SeisDownload")'
          
-         - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
+            - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
       after_success: skip
