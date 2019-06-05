@@ -34,6 +34,7 @@ jobs:
       julia: 1.1
       script: 
       - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
+                                               Pkg.clone("https://github.com/tclements/Noise.jl"); Pkg.build("Noise");
                                                Pkg.instantiate();
                                                Pkg.build("SeisDownload")'
       - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
