@@ -43,4 +43,7 @@ Anaconda environment is useful; see [link](https://github.com/obspy/obspy/wiki/I
 >brew install open-mpi (stable:v4.0.1) <br>
 brew install cmake (stable:v3.14.5) <br>
 then open julia, and<br>
-using Pkg; Pkg.build("MPI")
+using Pkg;<br>
+ENV["CC"]="path-to-your-mpicc" (use `which mpicc` in your terminal)<br>
+ENV["FC"]="path-to-your-mpif90"<br>
+Pkg.build("MPI") 
