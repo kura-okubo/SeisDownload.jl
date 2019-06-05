@@ -32,12 +32,13 @@ jobs:
   include:
     - stage: Documentation
       julia: 1.1
-      script: 
+      script:
+
+      - julia -e 'using Pkg; Pkg.pkg"add https://github.com/kura-okubo/SeisIO.jl https://github.com/tclements/Noise.jl";'
+
       - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
-                                               Pkg.clone("https://github.com/tclements/Noise.jl"); Pkg.build("Noise");
-                                               Pkg.clone("https://github.com/kura-okubo/SeisIO.jl"); Pkg.build("SeisIO");
-                                               Pkg.instantiate();
-                                               Pkg.build("SeisDownload")'
+         Pkg.instantiate();
+         Pkg.build("SeisDownload")'
       - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
 
 
