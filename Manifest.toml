@@ -289,9 +289,9 @@ version = "0.3.2"
 
 [[Noise]]
 deps = ["DSP", "DataFrames", "Dates", "FFTW", "GLM", "Glob", "Interpolations", "JLD2", "LinearAlgebra", "Plots", "Printf", "SeisIO", "Statistics", "Test"]
-git-tree-sha1 = "e40eeddb5f0685eb2bf4980bdbc5c523ea4fd00d"
+git-tree-sha1 = "3a7281b64bbbc0b72d502c0486f580ef8627d7d7"
 repo-rev = "master"
-repo-url = "https://github.com/tclements/Noise.jl"
+repo-url = "https://github.com/tclements/Noise.jl.git"
 uuid = "8cc7c3c0-6b5d-11e9-39fe-c9cd0236e08b"
 version = "0.1.0"
 
@@ -348,10 +348,9 @@ uuid = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
 version = "0.5.2"
 
 [[PooledArrays]]
-deps = ["Test"]
-git-tree-sha1 = "6ea4cfb9136d3ff2b9d30d6696cd72166a3b837c"
+git-tree-sha1 = "6e8c38927cb6e9ae144f7277c753714861b27d14"
 uuid = "2dfb63ee-cc39-5dd5-95bd-886bf059d720"
-version = "0.5.1"
+version = "0.5.2"
 
 [[Printf]]
 deps = ["Unicode"]
