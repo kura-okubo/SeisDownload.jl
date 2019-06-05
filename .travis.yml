@@ -36,7 +36,9 @@ jobs:
 
       - julia -e 'using Pkg; Pkg.pkg"add https://github.com/kura-okubo/SeisIO.jl https://github.com/tclements/Noise.jl";'
 
-      - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
+      - julia --project=docs/ -e 'using Pkg;
+                   Pkg.pkg"add https://github.com/kura-okubo/SeisIO.jl https://github.com/tclements/Noise.jl";
+ Pkg.develop(PackageSpec(path=pwd()));
          Pkg.instantiate();
          Pkg.build("SeisDownload")'
       - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
