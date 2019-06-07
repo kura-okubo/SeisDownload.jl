@@ -13,10 +13,6 @@ matrix:
     - julia: nightly
   fast_finish: true
 
-cache:
-  directories:
-  - $HOME/.ccache
-  - $HOME/.julia/registries # can we cache all of .julia?
 env:
   #- MPI_IMPL=mpich
   - MPI_IMPL=openmpi
@@ -37,10 +33,15 @@ jobs:
     - stage: Documentation
       julia: 1.1
       script:
-          - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
-                                               Pkg.instantiate();
-                                               Pkg.build("SeisDownload");
-                                               Pkg.build("SeisIO");
-                                               Pkg.build("Noise")'
-          - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
+
+      - julia -e 'using Pkg; Pkg.pkg"add https://github.com/kura-okubo/SeisIO.jl https://github.com/tclements/Noise.jl";'
+
+      - julia --project=docs/ -e 'using Pkg;
+                   Pkg.pkg"add https://github.com/kura-okubo/SeisIO.jl https://github.com/tclements/Noise.jl";
+ Pkg.develop(PackageSpec(path=pwd()));
+         Pkg.instantiate();
+         Pkg.build("SeisDownload")'
+      - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
+
+
       after_success: skip
