@@ -16,7 +16,7 @@ station     = ["LCCB", "MMNB"]
 #channels   = ["BP1", "BP2", "BP3"]
 location    = [""]
 channels    = ["BP1"]
-datacenter  = "NCEDC" #Data center
+datacenter  = "FDSN" #Data center
 src         = "NCEDC"
 
 starttime   = DateTime(2004,9,28,0,0,0)
