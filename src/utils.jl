@@ -1,6 +1,14 @@
+__precompile__()
 module Utils
-export get_starttimelist, get_timestamplist, get_stationlist, save_SeisData2JLD2, initlogo
-using Dates, JLD2, FileIO, SeisIO, Printf
+# with β version, please import SeisDownload.jl from the src directory as follows
+
+include("downloadfunc.jl")
+using .DownloadFunc
+
+using SeisIO, Printf, Dates, JLD2, FileIO
+
+export get_starttimelist, get_timestamplist, get_stationlist, testdownload, initlogo
+
 """
 
 get_starttimelist(st::DateTime, et::DateTime, unittime::Float64)
@@ -79,20 +87,80 @@ function get_stationlist(network::Array{String, 1}, station::Array{String, 1}, l
 end
 
 """
-    save_SeisData2JLD2(foname::String, groupname::String, S::SeisData)
+    testdownload(NP::Int, InputDict::Dict{String,Any}, MAX_MEM_PER_CPU::Float64=1.0, numofitr::Int64)
 
-    save SeisData structure to JLD2
+    print stats of download and return max_num_of_processes_per_parallelcycle
+
+# Output
+ -`max_num_of_processes_per_parallelcycle`: maximum number of processes for one request
+
 """
-function save_SeisData2JLD2(foname::String, varname::String, S::SeisData)
+function testdownload(NP::Int64, InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_CPU::Float64=1.0)
 
-    file = jldopen(foname, "r+")
-    file[varname] = S[1]
-    JLD2.close(file)
+    KB = 1024.0 #[bytes]
+    MB = 1024.0 * KB
+    GB = 1024.0 * MB
 
-    return nothing
+    DownloadType    = InputDict["DownloadType"]
+
+    trial_id        = 1
+
+    println("-------TEST DOWNLOAD START-----------")
+
+    if DownloadType == "Noise" || DownloadType == "noise"
+
+        while true
+            global t1 = @elapsed global Stest = seisdownload_NOISE(trial_id, InputDict) #[s]
+            if Stest[1].misc["dlerror"] == 0
+                break;
+            else
+                trial_id += 1
+            end
+        end
+
+    elseif  DownloadType == "Earthquake" || DownloadType == "earthquake"
+
+        while true
+            global t1 = @elapsed global Stest = seisdownload_EARTHQUAKE(trial_id, InputDict) #[s]
+            if Stest[1].misc["dlerror"] == 0
+                break;
+            else
+                trial_id += 1
+            end
+        end
+    end
+
+    if trial_id == numofitr - 1
+        error("all request returns error. Please check the station availability in your request.")
+    end
+
+    mem_per_requestid = 1.2 * sizeof(Stest) / GB #[GB] *for the safty, required memory is multiplied by 1.2
+
+    max_num_of_processes_per_parallelcycle = floor(Int64, MAX_MEM_PER_CPU/mem_per_requestid)
+    estimated_downloadtime = now() + Second(round(2 * t1 * numofitr / NP))
+
+    #println(mem_per_requestid)
+    #println(max_num_of_processes_per_parallelcycle)
+    println("-------DOWNLOAD STATS SUMMARY--------")
+
+    println(@sprintf("Number of processors is %d.", NP))
+
+    totaldownloadsize = mem_per_requestid * numofitr
+    if totaldownloadsize < MB
+        totaldownloadsize = totaldownloadsize * GB / MB #[MB]
+        sizeunit = "MB"
+    else
+        sizeunit = "GB"
+    end
+
+    println(@sprintf("Total download size will be %4.2f [%s].", 0.6 * totaldownloadsize, sizeunit)) #0.6: considering compression efficiency
+    println(@sprintf("Download will finish at %s.", round(estimated_downloadtime, Dates.Second(1))))
+
+    println("-------START DOWNLOADING-------------")
+
+    return max_num_of_processes_per_parallelcycle
+
 end
-
-
 
 """
 initlogo()
@@ -111,7 +179,7 @@ function initlogo()
     |_____/  \\___||_||___/|_____/  \\___/  \\_/\\_/  |_| |_||_| \\___/  \\__,_| \\__,_|
                       _         _  _
                      | |       | |(_)           |
-    __      __       | | _   _ | | _   __ _     | v1.0 (Last update 06/03/2019)
+    __      __       | | _   _ | | _   __ _     | v1.0 (Last update 06/06/2019)
     \\ \\ /\\ / /   _   | || | | || || | / _` |    | © Kurama Okubo
      \\ V  V /_  | |__| || |_| || || || (_| |    |
       \\_/\\_/(_)  \\____/  \\__,_||_||_| \\__,_|    |
@@ -121,6 +189,5 @@ function initlogo()
     println("Job start running at "*string(now())*"\n")
 
 end
-
 
 end

@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<q:quakeml xmlns:q="http://quakeml.org/xmlns/quakeml/1.2" xmlns:iris="http://service.iris.edu/fdsnws/event/1/" xmlns="http://quakeml.org/xmlns/bed/1.2" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="http://quakeml.org/schema/xsd http://quakeml.org/schema/xsd/QuakeML-1.2.xsd">
+<eventParameters publicID="smi:service.iris.edu/fdsnws/event/1/query">
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9911303">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="227">
+<type>Flinn-Engdahl region</type>
+<text>EASTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=177390987</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=18781972</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=18781972" iris:contributorOriginId="us10007f2w" iris:contributor="us" iris:contributorEventId="us10007f2w" iris:catalog="NEIC PDE">
+<time>
+<value>2016-12-06T00:05:13.050</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.9597</value>
+</latitude>
+<longitude>
+<value>137.3771</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=177390987">
+<mag>
+<value>4.2</value>
+</mag>
+<type>Mwr</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5196027">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250173</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11078860</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11078860" iris:contributorOriginId="us20007ftj" iris:contributor="us" iris:contributorEventId="us20007ftj" iris:catalog="NEIC PDE">
+<time>
+<value>2016-10-21T05:53:18.150</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.3651</value>
+</latitude>
+<longitude>
+<value>133.8024</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250173">
+<mag>
+<value>4.6</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5197648">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250175</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11347010</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11347010" iris:contributorOriginId="us1000773y" iris:contributor="us" iris:contributorEventId="us1000773y" iris:catalog="NEIC PDE">
+<time>
+<value>2016-10-21T05:46:22.110</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.3851</value>
+</latitude>
+<longitude>
+<value>133.9076</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250175">
+<mag>
+<value>4.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5197643">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250179</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11346860</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11346860" iris:contributorOriginId="us1000773r" iris:contributor="us" iris:contributorEventId="us1000773r" iris:catalog="NEIC PDE">
+<time>
+<value>2016-10-21T05:33:58.790</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.3563</value>
+</latitude>
+<longitude>
+<value>133.8545</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250179">
+<mag>
+<value>4.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5197644">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250180</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11346810</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11346810" iris:contributorOriginId="us1000773m" iris:contributor="us" iris:contributorEventId="us1000773m" iris:catalog="NEIC PDE">
+<time>
+<value>2016-10-21T05:30:07.340</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.5001</value>
+</latitude>
+<longitude>
+<value>133.5914</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250180">
+<mag>
+<value>4.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5196026">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250190</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11076210</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11076210" iris:contributorOriginId="at00ofdswb" iris:contributor="us" iris:contributorEventId="at00ofdswb,us20007fta,gcmt20161021050723,pt16295050" iris:catalog="NEIC PDE">
+<time>
+<value>2016-10-21T05:07:23.010</value>
+</time>
+<creationInfo>
+<author>us,at,pt,gcmt</author>
+</creationInfo>
+<latitude>
+<value>35.3676</value>
+</latitude>
+<longitude>
+<value>133.8148</value>
+</longitude>
+<depth>
+<value>5700.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=175250190">
+<mag>
+<value>6.2</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5183468">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="236">
+<type>Flinn-Engdahl region</type>
+<text>SHIKOKU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=179501715</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=14149122</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=14149122" iris:contributorOriginId="us20005kh5" iris:contributor="us" iris:contributorEventId="us20005kh5" iris:catalog="NEIC PDE">
+<time>
+<value>2016-04-21T14:20:36.040</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>33.4717</value>
+</latitude>
+<longitude>
+<value>134.4206</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=179501715">
+<mag>
+<value>4.3</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5178684">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=179510696</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=12633575</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=12633575" iris:contributorOriginId="us20005du0" iris:contributor="us" iris:contributorEventId="gcmt20160401023907,us20005du0" iris:catalog="NEIC PDE">
+<time>
+<value>2016-04-01T02:39:08.050</value>
+</time>
+<creationInfo>
+<author>us,gcmt</author>
+</creationInfo>
+<latitude>
+<value>33.3807</value>
+</latitude>
+<longitude>
+<value>136.3901</value>
+</longitude>
+<depth>
+<value>14000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=179510696">
+<mag>
+<value>5.9</value>
+</mag>
+<type>mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5171585">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27443211</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=7620417</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=7620417" iris:contributorOriginId="quakeml:earthquake.usgs.gov/archive/product/origin/us20004gzt/us/1453171756040/product.xml" iris:contributor="us" iris:contributorEventId="us20004gzt" iris:catalog="NEIC PDE">
+<time>
+<value>2015-12-14T06:01:37.290</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.4212</value>
+</latitude>
+<longitude>
+<value>133.9507</value>
+</longitude>
+<depth>
+<value>2840.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27443211">
+<mag>
+<value>4.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5166480">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27424403</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=7603872</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=7603872" iris:contributorOriginId="quakeml:earthquake.usgs.gov/archive/product/origin/us10003pfk/us/1452891060040/product.xml" iris:contributor="us" iris:contributorEventId="us10003pfk" iris:catalog="NEIC PDE">
+<time>
+<value>2015-10-17T23:36:52.460</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.4224</value>
+</latitude>
+<longitude>
+<value>133.9479</value>
+</longitude>
+<depth>
+<value>3000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27424403">
+<mag>
+<value>4.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5166479">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27424408</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=7603877</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=7603877" iris:contributorOriginId="quakeml:earthquake.usgs.gov/archive/product/origin/us10003pfm/us/1452891060040/product.xml" iris:contributor="us" iris:contributorEventId="us10003pfm" iris:catalog="NEIC PDE">
+<time>
+<value>2015-10-17T23:30:35.210</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>35.442</value>
+</latitude>
+<longitude>
+<value>133.9052</value>
+</longitude>
+<depth>
+<value>4830.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27424408">
+<mag>
+<value>4.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5157408">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="236">
+<type>Flinn-Engdahl region</type>
+<text>SHIKOKU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27404794</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=7586950</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=7586950" iris:contributorOriginId="quakeml:earthquake.usgs.gov/archive/product/origin/us20003fmh/us/1448930170040/product.xml" iris:contributor="us" iris:contributorEventId="us20003fmh" iris:catalog="NEIC PDE">
+<time>
+<value>2015-09-02T07:07:46.940</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>33.1732</value>
+</latitude>
+<longitude>
+<value>134.5449</value>
+</longitude>
+<depth>
+<value>16540.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=27404794">
+<mag>
+<value>4.7</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5157172">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="230">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=191374225</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=31701537</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=31701537" iris:contributorOriginId="09804282" iris:contributor="ISC" iris:contributorEventId="611932194" iris:catalog="ISC">
+<time>
+<value>2015-08-31T15:29:37.400</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.5593</value>
+</latitude>
+<longitude>
+<value>138.1661</value>
+</longitude>
+<depth>
+<value>11800.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=191374225">
+<mag>
+<value>4.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=5004491">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="236">
+<type>Flinn-Engdahl region</type>
+<text>SHIKOKU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=189577049</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=28139409</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=28139409" iris:contributorOriginId="09542274" iris:contributor="ISC" iris:contributorEventId="606707524" iris:catalog="ISC">
+<time>
+<value>2015-02-06T01:25:12.950</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>33.7539</value>
+</latitude>
+<longitude>
+<value>134.4182</value>
+</longitude>
+<depth>
+<value>16200.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=189577049">
+<mag>
+<value>4.8</value>
+</mag>
+<type>MW</type><creationInfo>
+<author>GCMT</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4819209">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183991138</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=26716712</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=26716712" iris:contributorOriginId="08459459" iris:contributor="ISC" iris:contributorEventId="606417251" iris:catalog="ISC">
+<time>
+<value>2014-12-26T13:30:34.540</value>
+</time>
+<creationInfo>
+<author>NEIC</author>
+</creationInfo>
+<latitude>
+<value>35.381</value>
+</latitude>
+<longitude>
+<value>135.8185</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183991138">
+<mag>
+<value>4.4</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4817437">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=184096041</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=26875663</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=26875663" iris:contributorOriginId="09138431" iris:contributor="ISC" iris:contributorEventId="606621969" iris:catalog="ISC">
+<time>
+<value>2014-11-17T21:07:14.100</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.5769</value>
+</latitude>
+<longitude>
+<value>135.0564</value>
+</longitude>
+<depth>
+<value>14900.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=184096041">
+<mag>
+<value>4.3</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4768538">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="227">
+<type>Flinn-Engdahl region</type>
+<text>EASTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=182185954</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=24277063</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=24277063" iris:contributorOriginId="08436042" iris:contributor="ISC" iris:contributorEventId="606920146" iris:catalog="ISC">
+<time>
+<value>2014-07-21T15:58:02.980</value>
+</time>
+<creationInfo>
+<author>NEIC</author>
+</creationInfo>
+<latitude>
+<value>35.9561</value>
+</latitude>
+<longitude>
+<value>137.8883</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=182185954">
+<mag>
+<value>4.7</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4641609">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="232">
+<type>Flinn-Engdahl region</type>
+<text>WESTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183767057</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=24044709</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=24044709" iris:contributorOriginId="08502660" iris:contributor="ISC" iris:contributorEventId="604724160" iris:catalog="ISC">
+<time>
+<value>2014-06-11T10:52:27.670</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>35.0431</value>
+</latitude>
+<longitude>
+<value>135.6917</value>
+</longitude>
+<depth>
+<value>6100.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183767057">
+<mag>
+<value>4.4</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4640123">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="227">
+<type>Flinn-Engdahl region</type>
+<text>EASTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183675492</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=23100561</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=23100561" iris:contributorOriginId="08315228" iris:contributor="ISC" iris:contributorEventId="610416287" iris:catalog="ISC">
+<time>
+<value>2014-05-03T07:20:22.410</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>36.2347</value>
+</latitude>
+<longitude>
+<value>137.5989</value>
+</longitude>
+<depth>
+<value>1000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183675492">
+<mag>
+<value>4.5</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4600802">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="227">
+<type>Flinn-Engdahl region</type>
+<text>EASTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183675403</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=23100305</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=23100305" iris:contributorOriginId="08315226" iris:contributor="ISC" iris:contributorEventId="610416274" iris:catalog="ISC">
+<time>
+<value>2014-05-03T06:27:00.090</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>36.2295</value>
+</latitude>
+<longitude>
+<value>137.6228</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183675403">
+<mag>
+<value>4.4</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4639767">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="227">
+<type>Flinn-Engdahl region</type>
+<text>EASTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183675338</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=23100110</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=23100110" iris:contributorOriginId="08315224" iris:contributor="ISC" iris:contributorEventId="607134549" iris:catalog="ISC">
+<time>
+<value>2014-05-03T06:07:10.130</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>36.2486</value>
+</latitude>
+<longitude>
+<value>137.6083</value>
+</longitude>
+<depth>
+<value>4000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183675338">
+<mag>
+<value>4.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10232961">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="227">
+<type>Flinn-Engdahl region</type>
+<text>EASTERN HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183674851</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=23098658</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=23098658" iris:contributorOriginId="05747158" iris:contributor="ISC" iris:contributorEventId="610416187" iris:catalog="ISC">
+<time>
+<value>2014-05-03T02:20:48.300</value>
+</time>
+<creationInfo>
+<author>JMA</author>
+</creationInfo>
+<latitude>
+<value>36.26</value>
+</latitude>
+<longitude>
+<value>137.6</value>
+</longitude>
+<depth>
+<value>3000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=183674851">
+<mag>
+<value>4.3</value>
+</mag>
+<type>Mw</type><creationInfo>
+<author>NIED</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=4524850">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181696067</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=18990680</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=18990680" iris:contributorOriginId="07629342" iris:contributor="ISC" iris:contributorEventId="603844455" iris:catalog="ISC">
+<time>
+<value>2013-12-14T15:13:52.140</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.6979</value>
+</latitude>
+<longitude>
+<value>135.7562</value>
+</longitude>
+<depth>
+<value>16900.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181696067">
+<mag>
+<value>4.5</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9413972">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181648760</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=13674178</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=13674178" iris:contributorOriginId="07489177" iris:contributor="ISC" iris:contributorEventId="603798561" iris:catalog="ISC">
+<time>
+<value>2013-11-20T01:57:54.830</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.9532</value>
+</latitude>
+<longitude>
+<value>134.6403</value>
+</longitude>
+<depth>
+<value>13800.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181648760">
+<mag>
+<value>4.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9197849">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181489296</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=12030770</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=12030770" iris:contributorOriginId="07265703" iris:contributor="ISC" iris:contributorEventId="603987070" iris:catalog="ISC">
+<time>
+<value>2013-09-02T17:22:43.370</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.0461</value>
+</latitude>
+<longitude>
+<value>135.3499</value>
+</longitude>
+<depth>
+<value>9300.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181489296">
+<mag>
+<value>4.4</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9194058">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181481840</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=12011719</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=12011719" iris:contributorOriginId="06936823" iris:contributor="ISC" iris:contributorEventId="603357500" iris:catalog="ISC">
+<time>
+<value>2013-08-30T08:32:25.500</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>33.6919</value>
+</latitude>
+<longitude>
+<value>135.9578</value>
+</longitude>
+<depth>
+<value>14300.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181481840">
+<mag>
+<value>4.6</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9142388">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181392189</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11752927</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11752927" iris:contributorOriginId="06835622" iris:contributor="ISC" iris:contributorEventId="603236458" iris:catalog="ISC">
+<time>
+<value>2013-07-17T03:07:50.270</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.5668</value>
+</latitude>
+<longitude>
+<value>135.0402</value>
+</longitude>
+<depth>
+<value>17200.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181392189">
+<mag>
+<value>4.4</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9106589">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="230">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF HONSHU, JAPAN</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181331323</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11573673</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11573673" iris:contributorOriginId="06593423" iris:contributor="ISC" iris:contributorEventId="603078835" iris:catalog="ISC">
+<time>
+<value>2013-06-18T00:21:47.570</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>33.3391</value>
+</latitude>
+<longitude>
+<value>137.0794</value>
+</longitude>
+<depth>
+<value>8600.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181331323">
+<mag>
+<value>4.3</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9094891">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181311382</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11515175</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11515175" iris:contributorOriginId="06592479" iris:contributor="ISC" iris:contributorEventId="603057836" iris:catalog="ISC">
+<time>
+<value>2013-06-08T11:39:00.420</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.1761</value>
+</latitude>
+<longitude>
+<value>135.2234</value>
+</longitude>
+<depth>
+<value>5300.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181311382">
+<mag>
+<value>4.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=9094667">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="233">
+<type>Flinn-Engdahl region</type>
+<text>NEAR S. COAST OF WESTERN HONSHU</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181310989</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=11514071</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=11514071" iris:contributorOriginId="06592460" iris:contributor="ISC" iris:contributorEventId="606147076" iris:catalog="ISC">
+<time>
+<value>2013-06-08T07:17:54.860</value>
+</time>
+<creationInfo>
+<author>ISC</author>
+</creationInfo>
+<latitude>
+<value>34.1252</value>
+</latitude>
+<longitude>
+<value>135.2439</value>
+</longitude>
+<depth>
+<value>3700.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=181310989">
+<mag>
+<value>4.3</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>NEIC</author>
+</creationInfo>
+</magnitude>
+</event>
+</eventParameters>
+</q:quakeml>

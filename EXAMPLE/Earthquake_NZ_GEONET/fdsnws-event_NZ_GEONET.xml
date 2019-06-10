@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<q:quakeml xmlns:q="http://quakeml.org/xmlns/quakeml/1.2" xmlns:iris="http://service.iris.edu/fdsnws/event/1/" xmlns="http://quakeml.org/xmlns/bed/1.2" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="http://quakeml.org/schema/xsd http://quakeml.org/schema/xsd/QuakeML-1.2.xsd">
+<eventParameters publicID="smi:service.iris.edu/fdsnws/event/1/query">
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10805930">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="173">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186892299</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30709986</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30709986" iris:contributorOriginId="us1000e8th" iris:contributor="us" iris:contributorEventId="us1000e8th" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-20T01:14:35.070</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-20.9751</value>
+</latitude>
+<longitude>
+<value>-173.8779</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186892299">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10805924">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="173">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=187182245</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30709686</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30709686" iris:contributorOriginId="us1000e8t0" iris:contributor="us" iris:contributorEventId="us1000e8t0" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-20T00:42:14.570</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-21.0684</value>
+</latitude>
+<longitude>
+<value>-173.9833</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=187182245">
+<mag>
+<value>5.6</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10805167">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="179">
+<type>Flinn-Engdahl region</type>
+<text>SOUTH OF KERMADEC ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=187132484</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30675736</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30675736" iris:contributorOriginId="us1000e7qq" iris:contributor="us" iris:contributorEventId="us1000e7qq" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-18T01:45:31.300</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-34.5893</value>
+</latitude>
+<longitude>
+<value>-178.4141</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=187132484">
+<mag>
+<value>6.1</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10805141">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="188">
+<type>Flinn-Engdahl region</type>
+<text>LOYALTY ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186892205</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30674486</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30674486" iris:contributorOriginId="us1000e7pv" iris:contributor="us" iris:contributorEventId="us1000e7pv" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-18T00:27:27.740</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-21.3079</value>
+</latitude>
+<longitude>
+<value>168.6022</value>
+</longitude>
+<depth>
+<value>13810.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186892205">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10805015">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="177">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186911067</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30668436</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30668436" iris:contributorOriginId="us1000e7f3" iris:contributor="us" iris:contributorEventId="us1000e7f3" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-17T18:24:48.050</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-31.8592</value>
+</latitude>
+<longitude>
+<value>-178.547</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186911067">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10804539">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="179">
+<type>Flinn-Engdahl region</type>
+<text>SOUTH OF KERMADEC ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186902881</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30647486</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30647486" iris:contributorOriginId="us1000e6hz" iris:contributor="us" iris:contributorEventId="us1000e6hz" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-16T17:22:13.630</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-33.7895</value>
+</latitude>
+<longitude>
+<value>-179.4473</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186902881">
+<mag>
+<value>5.9</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10802897">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="173">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186959703</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30577936</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30577936" iris:contributorOriginId="us1000e3zd" iris:contributor="us" iris:contributorEventId="us1000e3zd" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-13T05:50:33.280</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-21.1494</value>
+</latitude>
+<longitude>
+<value>-173.807</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186959703">
+<mag>
+<value>5.5</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10770201">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="173">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186668370</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30316086</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30316086" iris:contributorOriginId="us1000e04x" iris:contributor="us" iris:contributorEventId="us1000e04x" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-07T19:25:38.580</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-20.8441</value>
+</latitude>
+<longitude>
+<value>-173.9186</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186668370">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10769970">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="185">
+<type>Flinn-Engdahl region</type>
+<text>VANUATU ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186524229</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30298786</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30298786" iris:contributorOriginId="us1000dzt7" iris:contributor="us" iris:contributorEventId="us1000dzt7" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-07T08:08:20.000</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-20.8205</value>
+</latitude>
+<longitude>
+<value>172.2663</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186524229">
+<mag>
+<value>5.6</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10769251">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="188">
+<type>Flinn-Engdahl region</type>
+<text>LOYALTY ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186397611</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30266736</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30266736" iris:contributorOriginId="us1000dyzj" iris:contributor="us" iris:contributorEventId="us1000dyzj" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-05T20:36:47.080</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-21.3818</value>
+</latitude>
+<longitude>
+<value>168.2702</value>
+</longitude>
+<depth>
+<value>19520.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186397611">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10768297">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="174">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186605197</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30223836</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30223836" iris:contributorOriginId="us1000dxqm" iris:contributor="us" iris:contributorEventId="us1000dxqm" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-04T07:47:04.070</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-23.5166</value>
+</latitude>
+<longitude>
+<value>-175.1313</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186605197">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10766858">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="178">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS, NEW ZEALAND</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186689019</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30162486</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30162486" iris:contributorOriginId="us1000dv5b" iris:contributor="us" iris:contributorEventId="us1000dv5b" iris:catalog="NEIC PDE">
+<time>
+<value>2018-05-01T03:15:40.330</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-29.4836</value>
+</latitude>
+<longitude>
+<value>-177.0774</value>
+</longitude>
+<depth>
+<value>24170.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186689019">
+<mag>
+<value>5.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10763258">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="177">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186223787</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30012486</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30012486" iris:contributorOriginId="us1000dpih" iris:contributor="us" iris:contributorEventId="us1000dpih" iris:catalog="NEIC PDE">
+<time>
+<value>2018-04-20T19:30:37.430</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-29.982</value>
+</latitude>
+<longitude>
+<value>-176.2476</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186223787">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10763061">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="174">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186224895</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=30002886</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=30002886" iris:contributorOriginId="us1000dnyd" iris:contributor="us" iris:contributorEventId="us1000dnyd" iris:catalog="NEIC PDE">
+<time>
+<value>2018-04-19T23:59:55.640</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-22.6501</value>
+</latitude>
+<longitude>
+<value>-174.5778</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186224895">
+<mag>
+<value>5.3</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10728286">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="174">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186108806</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29760236</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29760236" iris:contributorOriginId="us2000e0rd" iris:contributor="us" iris:contributorEventId="us2000e0rd" iris:catalog="NEIC PDE">
+<time>
+<value>2018-04-15T23:40:20.640</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-23.7147</value>
+</latitude>
+<longitude>
+<value>-175.2102</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186108806">
+<mag>
+<value>5.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10723135">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="173">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186120997</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29548036</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29548036" iris:contributorOriginId="us1000dcae" iris:contributor="us" iris:contributorEventId="us1000dcae" iris:catalog="NEIC PDE">
+<time>
+<value>2018-04-02T01:50:51.040</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-20.6145</value>
+</latitude>
+<longitude>
+<value>-173.7398</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186120997">
+<mag>
+<value>5.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10722725">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="178">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS, NEW ZEALAND</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186096747</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29528486</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29528486" iris:contributorOriginId="us1000dbtx" iris:contributor="us" iris:contributorEventId="us1000dbtx" iris:catalog="NEIC PDE">
+<time>
+<value>2018-03-31T06:31:12.290</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-30.2351</value>
+</latitude>
+<longitude>
+<value>-177.7426</value>
+</longitude>
+<depth>
+<value>24670.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186096747">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10720934">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="177">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186226881</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29449636</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29449636" iris:contributorOriginId="us1000d8u2" iris:contributor="us" iris:contributorEventId="us1000d8u2" iris:catalog="NEIC PDE">
+<time>
+<value>2018-03-25T07:57:31.710</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-29.005</value>
+</latitude>
+<longitude>
+<value>-175.8634</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186226881">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10720895">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="174">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185966958</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29447736</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29447736" iris:contributorOriginId="us1000d8sa" iris:contributor="us" iris:contributorEventId="us1000d8sa" iris:catalog="NEIC PDE">
+<time>
+<value>2018-03-25T01:53:20.370</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-22.9187</value>
+</latitude>
+<longitude>
+<value>-174.9273</value>
+</longitude>
+<depth>
+<value>13130.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185966958">
+<mag>
+<value>5.2</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10719924">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="178">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS, NEW ZEALAND</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185989275</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29409086</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29409086" iris:contributorOriginId="us1000d7el" iris:contributor="us" iris:contributorEventId="us1000d7el" iris:catalog="NEIC PDE">
+<time>
+<value>2018-03-22T07:26:26.410</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-30.1733</value>
+</latitude>
+<longitude>
+<value>-177.723</value>
+</longitude>
+<depth>
+<value>20170.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185989275">
+<mag>
+<value>5.4</value>
+</mag>
+<type>Mww</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10718636">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="175">
+<type>Flinn-Engdahl region</type>
+<text>SOUTH OF TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185921268</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29351736</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29351736" iris:contributorOriginId="us1000d635" iris:contributor="us" iris:contributorEventId="us1000d635" iris:catalog="NEIC PDE">
+<time>
+<value>2018-03-18T13:20:06.360</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-24.5267</value>
+</latitude>
+<longitude>
+<value>-175.8404</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185921268">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10683534">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="178">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS, NEW ZEALAND</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186026942</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=29035454</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=29035454" iris:contributorOriginId="us1000d2eq" iris:contributor="us" iris:contributorEventId="us1000d2eq" iris:catalog="NEIC PDE">
+<time>
+<value>2018-03-09T18:02:28.640</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-30.6524</value>
+</latitude>
+<longitude>
+<value>-178.1425</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=186026942">
+<mag>
+<value>5.4</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10681043">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="188">
+<type>Flinn-Engdahl region</type>
+<text>LOYALTY ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185867840</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=28929754</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=28929754" iris:contributorOriginId="us2000dbiw" iris:contributor="us" iris:contributorEventId="us2000dbiw" iris:catalog="NEIC PDE">
+<time>
+<value>2018-03-03T00:42:30.340</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-21.2784</value>
+</latitude>
+<longitude>
+<value>168.5011</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185867840">
+<mag>
+<value>5.1</value>
+</mag>
+<type>Mwr</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10679821">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="189">
+<type>Flinn-Engdahl region</type>
+<text>SOUTHEAST OF LOYALTY ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185867397</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=28884554</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=28884554" iris:contributorOriginId="us2000d96y" iris:contributor="us" iris:contributorEventId="us2000d96y" iris:catalog="NEIC PDE">
+<time>
+<value>2018-02-28T16:21:55.750</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-22.4181</value>
+</latitude>
+<longitude>
+<value>171.0494</value>
+</longitude>
+<depth>
+<value>13100.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185867397">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10677099">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="173">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185881687</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=28772504</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=28772504" iris:contributorOriginId="us2000d5g4" iris:contributor="us" iris:contributorEventId="us2000d5g4" iris:catalog="NEIC PDE">
+<time>
+<value>2018-02-20T17:04:58.600</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-20.723</value>
+</latitude>
+<longitude>
+<value>-173.8041</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185881687">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10643496">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="171">
+<type>Flinn-Engdahl region</type>
+<text>SOUTH OF FIJI ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185403127</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=28514854</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=28514854" iris:contributorOriginId="us2000d2k8" iris:contributor="us" iris:contributorEventId="us2000d2k8" iris:catalog="NEIC PDE">
+<time>
+<value>2018-02-15T09:31:16.590</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-22.3707</value>
+</latitude>
+<longitude>
+<value>-176.1207</value>
+</longitude>
+<depth>
+<value>9310.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185403127">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10642156">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="177">
+<type>Flinn-Engdahl region</type>
+<text>KERMADEC ISLANDS REGION</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185746773</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=28461954</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=28461954" iris:contributorOriginId="us2000d0mg" iris:contributor="us" iris:contributorEventId="us2000d0mg" iris:catalog="NEIC PDE">
+<time>
+<value>2018-02-11T21:06:18.110</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-31.3599</value>
+</latitude>
+<longitude>
+<value>-175.8792</value>
+</longitude>
+<depth>
+<value>14350.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185746773">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10639441">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="160">
+<type>Flinn-Engdahl region</type>
+<text>OFF E. COAST OF N. ISLAND, N.Z.</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185281850</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=28347704</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=28347704" iris:contributorOriginId="us1000cfz6" iris:contributor="us" iris:contributorEventId="us1000cfz6" iris:catalog="NEIC PDE">
+<time>
+<value>2018-02-05T09:25:20.040</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-35.5315</value>
+</latitude>
+<longitude>
+<value>178.8275</value>
+</longitude>
+<depth>
+<value>8780.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185281850">
+<mag>
+<value>5.2</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10603153">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="189">
+<type>Flinn-Engdahl region</type>
+<text>SOUTHEAST OF LOYALTY ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185254746</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=27820504</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=27820504" iris:contributorOriginId="us1000c31m" iris:contributor="us" iris:contributorEventId="us1000c31m" iris:catalog="NEIC PDE">
+<time>
+<value>2018-01-10T05:12:11.230</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-21.7678</value>
+</latitude>
+<longitude>
+<value>169.1144</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=185254746">
+<mag>
+<value>5.1</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+<event publicID="smi:service.iris.edu/fdsnws/event/1/query?eventid=10564038">
+<type>earthquake</type>
+<description xmlns:iris="http://service.iris.edu/fdsnws/event/1/" iris:FEcode="173">
+<type>Flinn-Engdahl region</type>
+<text>TONGA ISLANDS</text>
+</description><preferredMagnitudeID>smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=184691187</preferredMagnitudeID>
+<preferredOriginID>smi:service.iris.edu/fdsnws/event/1/query?originid=27302404</preferredOriginID>
+<origin xmlns:iris="http://service.iris.edu/fdsnws/event/1/" publicID="smi:service.iris.edu/fdsnws/event/1/query?originid=27302404" iris:contributorOriginId="us2000c4tw" iris:contributor="us" iris:contributorEventId="us2000c4tw" iris:catalog="NEIC PDE">
+<time>
+<value>2017-12-15T12:52:37.490</value>
+</time>
+<creationInfo>
+<author>us</author>
+</creationInfo>
+<latitude>
+<value>-21.8437</value>
+</latitude>
+<longitude>
+<value>-174.5893</value>
+</longitude>
+<depth>
+<value>10000.0</value>
+</depth>
+</origin>
+<magnitude publicID="smi:service.iris.edu/fdsnws/event/1/query?magnitudeid=184691187">
+<mag>
+<value>5.0</value>
+</mag>
+<type>mb</type><creationInfo>
+<author>us</author>
+</creationInfo>
+</magnitude>
+</event>
+</eventParameters>
+</q:quakeml>
