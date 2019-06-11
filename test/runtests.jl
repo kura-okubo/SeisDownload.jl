@@ -5,30 +5,83 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
 
 @testset "SeisDownload.jl" begin
     # Write your own tests here.
-    #---parameters---#
-    network     = ["NZ"]
-    station     = ["BFZ"]
-    location    = ["20"]
-    channels    = ["BNE"]
+
+    #==================================================#
+    # Input Parameters
+    NP = 1 # number of processor
+    MAX_MEM_PER_CPU = 2.0 # [GB] maximum allocated memory for one cpu
+    DownloadType = "Noise" # Choise of "Noise" or "Earthquake"
+
+    network     = ["BP"]
+    station     = ["LCCB", "HQUAKE"]
+    #station = ["CCRB","EADB","FROB","GHIB","JCNB","JCSB","LCCB","MMNB","SCYB","SMNB","VARB","VCAB"]
+
+    location    = [""]
+    channel     = ["BP1"]
     datacenter  = "FDSN" #Data center
-    src         = "IRIS"
+    src         = "NCEDC"
 
-    starttime   = DateTime(2016,11,13,12,0,0)
-    endtime     = DateTime(2016,11,13,13,0,0)
-    CC_time_unit = 3600 # minimum time unit for cross-correlation [s]
-    foname      = "test"
+    # Time info for Noise case
+    starttime   = DateTime(2004,9,25,0,0,0)
+    endtime     = DateTime(2004,9,25,2,0,0)
 
-    pre_filt    = (0.001, 0.002, 10.0, 20.0) #prefilter of remove_response: taper between f1 and f2, f3 and f4
-    downsample_fs = 20; #downsampling rate after filtering
+    IsLocationBox = false
+    method  = "FDSN" # Method to download data.
+    datasource = "NCEDC" # currently, only one src can be specified.
 
-    #----------------#
+    DL_time_unit = 3600 * 1 #3600 * 24 # Download tiem unit [s] more than one day is better to avoid artifacts of response removal
 
-    # create dataset directory
-    mkpath("./dataset")
-    fopath=("./dataset/"*foname*".jld2")
+    IsResponseRemove = true #whether instrumental response is removed or not
+    pre_filt    = (0.001, 0.002, 10.0, 20.0) #prefilter tuple used obspy remove_response: taper between f1 and f2, f3 and f4 with obspy
 
-    # download data
-    @test 0 == seisdownload(network, station, location, channels, datacenter, src, starttime, endtime, float(CC_time_unit), fopath;
-                pre_filt=pre_filt, downsample_fs=float(downsample_fs), IsRemoveStationXML=true)
+    fodir       = "./dataset"
+    foname      = "BPnetwork" # data is saved at ./dataset/$foname.jld2
+    #==================================================#
 
+    # store metadata in Dictionary
+    # This can be customized by users
+
+    stationlist       = String[]
+    stationmethod    = String[]
+    stationsrc        = String[]
+    for i=1:length(network)
+        for j=1:length(station)
+            for k=1:length(location)
+                for l=1:length(channel)
+                    stationname = join([network[i], station[j], location[k], channel[l]], ".")
+                    push!(stationlist, stationname)
+
+                    #Here should be improved for multiple seismic network; we have to make
+                    #proper conbination of request station and data server.
+                    push!(stationmethod, method)
+                    push!(stationsrc, datasource)
+                end
+            end
+        end
+    end
+
+    stationinfo = Dict(["stationlist" => stationlist, "stationmethod" => stationmethod, "stationsrc" => stationsrc])
+
+    mkpath(fodir)
+    fopath=joinpath(fodir, foname*".jld2")
+
+    #if lat-log box or not
+    IsLocationBox ? reg=locationbox : reg=[]
+    IsResponseRemove ? pre_filt = pre_filt : pre_filt = []
+
+    InputDictionary = Dict([
+            "DownloadType"=> DownloadType,
+            "stationinfo" => stationinfo,
+            "starttime"   => starttime,
+            "endtime"     => endtime,
+            "DL_time_unit"=> DL_time_unit,
+            "IsLocationBox"   => IsLocationBox,
+            "reg"             => reg,
+            "IsResponseRemove"=> IsResponseRemove,
+            "pre_filt"        => pre_filt,
+            "fopath"          => fopath
+        ])
+
+    # mass request with input Dictionary
+    @test 0 == seisdownload(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
 end
