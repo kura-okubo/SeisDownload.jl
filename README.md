@@ -20,9 +20,9 @@ This package depends on [SeisIO.jl®](https://github.com/jpjones76/SeisIO.jl) an
 Then from the Julia command prompt:
 
 1. Press ] to enter pkg.
-2. Type or copy: `add https://github.com/kura-okubo/SeisDownload.jl; build; precompile`
+2. Type or copy: `add https://github.com/kura-okubo/SeisDownload.jl`
 3. Press backspace to exit pkg.
-4. Type or copy: `using SeisDownload`
+4. Type or copy: `using Pkg; Pkg.build("SeisDownload"); using SeisDownload`
 
 ## Example
 You can download data using `seisdownload`:
