@@ -1,9 +1,4 @@
-using SeisIO, Dates, Distributed
-
-# with β version, please import SeisDownload.jl from the src directory as follows
-include("./src/SeisDownload.jl")
-using .SeisDownload
-
+using SeisDownload, Dates
 
 #==================================================#
 # Input Parameters
@@ -22,29 +17,26 @@ src         = "NCEDC"
 
 # Time info for Noise case
 starttime   = DateTime(2004,9,25,0,0,0)
-endtime     = DateTime(2004,9,25,3,0,0)
-#endtime     = DateTime(2004,10,2,0,0,0)
-DL_time_unit = 3600 * 1 #3600 * 24 # Download tiem unit [s] more than one day is better to avoid artifacts of response removal
+endtime     = DateTime(2004,9,25,12,0,0)
 
+IsLocationBox = false
+method  = "FDSN" # Method to download data.
+datasource = "NCEDC" # currently, only one src can be specified.
+
+DL_time_unit = 3600 * 2 #3600 * 24 # Download tiem unit [s] more than one day is better to avoid artifacts of response removal
+
+IsResponseRemove = true #whether instrumental response is removed or not
 pre_filt    = (0.001, 0.002, 10.0, 20.0) #prefilter tuple used obspy remove_response: taper between f1 and f2, f3 and f4 with obspy
 
+fodir       = "./dataset"
 foname      = "BPnetwork" # data is saved at ./dataset/$foname.jld2
 #==================================================#
-
-
-# allocate cpus
-addprocs(NP-1)
-
-@everywhere include("./src/SeisDownload.jl")
-@everywhere include("./src/utils.jl")
-#using SeisIO, Dates, SeisDownload
-@everywhere using .SeisDownload, .Utils
 
 # store metadata in Dictionary
 # This can be customized by users
 
 stationlist       = String[]
-stationdatacenter = String[]
+stationmethod    = String[]
 stationsrc        = String[]
 for i=1:length(network)
     for j=1:length(station)
@@ -55,28 +47,34 @@ for i=1:length(network)
 
                 #Here should be improved for multiple seismic network; we have to make
                 #proper conbination of request station and data server.
-                push!(stationdatacenter, datacenter)
-                push!(stationsrc, src)
+                push!(stationmethod, method)
+                push!(stationsrc, datasource)
             end
         end
     end
 end
 
-stationinfo = Dict(["stationlist" => stationlist, "stationdatacenter" => stationdatacenter, "stationsrc" => stationsrc])
+stationinfo = Dict(["stationlist" => stationlist, "stationmethod" => stationmethod, "stationsrc" => stationsrc])
 
-mkpath("./dataset")
-fopath=("./dataset/"*foname*".jld2")
+mkpath(fodir)
+fopath=joinpath(fodir, foname*".jld2")
+
+#if lat-log box or not
+IsLocationBox ? reg=locationbox : reg=[]
+IsResponseRemove ? pre_filt = pre_filt : pre_filt = []
 
 InputDictionary = Dict([
-      "DownloadType"=> DownloadType,
-      "stationinfo" => stationinfo,
-      "starttime"   => starttime,
-      "endtime"     => endtime,
-      "DL_time_unit"=> DL_time_unit,
-      "pre_filt"    => pre_filt,
-      "fopath"      => fopath
+        "DownloadType"=> DownloadType,
+        "stationinfo" => stationinfo,
+        "starttime"   => starttime,
+        "endtime"     => endtime,
+        "DL_time_unit"=> DL_time_unit,
+        "IsLocationBox"   => IsLocationBox,
+        "reg"             => reg,
+        "IsResponseRemove"=> IsResponseRemove,
+        "pre_filt"        => pre_filt,
+        "fopath"          => fopath
     ])
 
-
 # mass request with input Dictionary
-SeisDownload.ParallelSeisrequest(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
+seisdownload(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))

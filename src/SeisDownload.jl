@@ -16,6 +16,7 @@ using SeisIO, Dates, Printf, JLD2, FileIO,  Distributed
 include("remove_response_obspy.jl")
 using .Remove_response_obspy
 #------------------------------------------------------------------#
+
 export seisdownload
 
 
@@ -31,6 +32,14 @@ export seisdownload
 function seisdownload(NP::Int, InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
     Utils.initlogo()
+
+	addprocs(NP-1)
+
+	#@everywhere include("./src/SeisDownload.jl")
+	#@everywhere include("./src/utils.jl")
+	#using SeisIO, Dates, SeisDownload
+	#@everywhere using .SeisDownload, .Utils
+
 
 	DownloadType    = InputDict["DownloadType"]
 
