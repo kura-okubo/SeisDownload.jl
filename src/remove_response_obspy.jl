@@ -26,11 +26,15 @@ function remove_response_obspy!(S::SeisData, xf::String; pre_filt::NTuple{4,Floa
     for i = 1:length(S.x)
         #add zero at the edge of data to avoid edge effect
         numofzeropad = round(Int64, zeropadlen * S.fs[i])
-        z1 = zeros(numofzeropad)
-        x_withzero = vcat(z1,S.x[i],z1)
+        #z1 = zeros(numofzeropad)
+        #---modify 2019/06/11: add fliped signal to avoid edge effect
+        zl = S.x[i][numofzeropad:-1:1]
+        zr = S.x[i][end:-1:end-numofzeropad+1]
+
+        x_withpad = vcat(zl,S.x[i],zr)
         trace=Trace.Trace()
         #trace.data = S.x[i]
-        trace.data = x_withzero
+        trace.data = x_withpad
         trace.stats.sampling_rate = S.fs[i]
         trace.stats.delta = 1.0./ S.fs[i]
         trace.stats.starttime = UTCDateTime.UTCDateTime(string(u2d(S.t[i][1,2]*1e-6)))
@@ -45,8 +49,8 @@ function remove_response_obspy!(S::SeisData, xf::String; pre_filt::NTuple{4,Floa
         inv = read_inventory.read_inventory(xf)
         #stresm.remove_sensitivity(inventory=inv)
         stream.remove_response(inventory=inv, output=output, pre_filt=pre_filt, plot=false)
-        x_withzero_removed =  stream.traces[1].data
-        S.x[i] = x_withzero_removed[numofzeropad+1:end-numofzeropad]
+        x_withpad_removed =  stream.traces[1].data
+        S.x[i] = x_withpad_removed[numofzeropad+1:end-numofzeropad]
         #add note
         SeisIO.note!(S[i], "remove_response_obspy!, pre_filt=$pre_filt")
     end
