@@ -21,9 +21,9 @@ export seisdownload
 
 
 """
-    ParallelSeisrequest(InputDict::Dict MAX_MEM_PER_CPU::Float64=1.0)
+    seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
-    Request seismic data with Multiple cores.
+    Request seismic data and save into jld2.
 # Arguments
 - `InputDict`    : dictionary which contains request information
 - `MAX_MEM_PER_CPU` : maximum available memory for 1 cpu [GB] (default = 1.0GB)
