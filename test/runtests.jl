@@ -69,14 +69,6 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
     IsLocationBox ? reg=locationbox : reg=[]
     IsResponseRemove ? pre_filt = pre_filt : pre_filt = []
 
-<<<<<<< HEAD
-    # download data
-    # Because obspy emvironment is not in Travis server, we temporary skip this test
-    # @test 0 == seisdownload(network, station, location, channels, datacenter, src, starttime, endtime, float(CC_time_unit), fopath;
-    #            pre_filt=pre_filt, downsample_fs=float(downsample_fs), IsRemoveStationXML=true)
-    #rm(fopath)
-    @test 1 == 1 + 1 - 1
-=======
     InputDictionary = Dict([
             "DownloadType"=> DownloadType,
             "stationinfo" => stationinfo,
@@ -89,7 +81,6 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
             "pre_filt"        => pre_filt,
             "fopath"          => fopath
         ])
->>>>>>> dev
 
     # mass request with input Dictionary
     @test 0 == seisdownload(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
