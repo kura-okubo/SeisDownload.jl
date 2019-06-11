@@ -13,6 +13,7 @@ matrix:
     - julia: nightly
   fast_finish: true
 
+<<<<<<< HEAD
 cache:
   directories:
   - $HOME/.ccache
@@ -28,6 +29,8 @@ before_install:
   - export TMPDIR=/tmp
   - export OMPI_MCA_btl=self,tcp
 
+=======
+>>>>>>> dev
 notifications:
   email: false
 after_success:

@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.com/kura-okubo/SeisDownload.jl.svg?branch=master)](https://travis-ci.com/kura-okubo/SeisDownload.jl)
 [![Codecov](https://codecov.io/gh/kura-okubo/SeisDownload.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/kura-okubo/SeisDownload.jl)
 
+<<<<<<< HEAD
 **Download seismic waveform from data server.**
 
 <img src="./icon.jpg" alt="logo" width="500"/>
@@ -44,3 +45,11 @@ Anaconda environment is useful; see [link](https://github.com/obspy/obspy/wiki/I
 brew install cmake (stable:v3.14.5) <br>
 then open julia, and<br>
 using Pkg; Pkg.build("MPI")
+=======
+## Installation
+
+1. `add https://github.com/kura-okubo/SeisDownload.jl`
+2. `using Pkg; Pkg.build("SeisDownload")`
+3. You can run examples in `EXAMPLE` directory: <br>
+`cd SeisDownload/EXAMPLE/Noise_BP; julia exec.jl`
+>>>>>>> dev
