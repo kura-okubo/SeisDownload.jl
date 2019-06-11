@@ -1,8 +1,8 @@
-using SeisDownload, Dates, JSON
+@everywhere using SeisDownload, Dates
+using Dates, JSON
 
 #==================================================#
 # Input Parameters
-NP = 4 # number of processor
 MAX_MEM_PER_CPU = 2.0 # [GB] maximum allocated memory for one cpu
 DownloadType = "Earthquake" # Choise of "Noise" or "Earthquake"
 
@@ -103,4 +103,4 @@ InputDictionary = Dict([
 
 
 # mass request with input Dictionary
-seisdownload(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
+seisdownload(InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))

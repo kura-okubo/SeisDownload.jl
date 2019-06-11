@@ -1,8 +1,8 @@
-using SeisDownload, Dates, LightXML
+@everywhere using SeisDownload
+using Dates, LightXML
 
 #==================================================#
 # Input Parameters
-NP = 4 # number of processor
 MAX_MEM_PER_CPU = 2.0 # [GB] maximum allocated memory for one cpu
 DownloadType = "Earthquake" # Choise of "Noise" or "Earthquake"
 
@@ -47,7 +47,7 @@ event = [] # event information (starttime, lat, lon, mag...)
 for i = 1:Ne
 
     Npicks = 1
-    println("index of quake ", i, " Number of picks  ",Npicks)
+    #println("index of quake ", i, " Number of picks  ",Npicks)
 
     #event information
     publicid    = attribute(ev[i]["origin"][1], "publicID")
@@ -73,7 +73,6 @@ for i = 1:Ne
     pickphase_dict = []
 
     for j=1:Npicks
-        println(j)
         ptime[j] = content(ev[i]["origin"][1]["time"][1])[2:end-1]
 
         net[j] = network[1] # network code
@@ -86,8 +85,6 @@ for i = 1:Ne
         starttime = starttime - Dates.Second(SecondsBeforePick)
         endtime  = starttime + Dates.Second(SecondsAfterPick)
         # prints for sanity check
-        println(starttime)
-        println(endtime)
 
         pdict_temp = Dict("starttime" => starttime, "endtime" => endtime,
          "net" => net[j], "sta" => sta[j], "loc" => loc[j], "cha" => cha[j], "src" => src[j])
@@ -122,4 +119,4 @@ InputDictionary = Dict([
     ])
 
 # mass request with input Dictionary
-seisdownload(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
+seisdownload(InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))

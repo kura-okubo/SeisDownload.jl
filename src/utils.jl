@@ -5,7 +5,7 @@ module Utils
 include("downloadfunc.jl")
 using .DownloadFunc
 
-using SeisIO, Printf, Dates, JLD2, FileIO
+using SeisIO, Printf, Dates, JLD2, FileIO, Distributed
 
 export get_starttimelist, get_timestamplist, get_stationlist, testdownload, initlogo
 
@@ -87,7 +87,7 @@ function get_stationlist(network::Array{String, 1}, station::Array{String, 1}, l
 end
 
 """
-    testdownload(NP::Int, InputDict::Dict{String,Any}, MAX_MEM_PER_CPU::Float64=1.0, numofitr::Int64)
+    testdownload(InputDict::Dict{String,Any}, MAX_MEM_PER_CPU::Float64=1.0, numofitr::Int64)
 
     print stats of download and return max_num_of_processes_per_parallelcycle
 
@@ -95,7 +95,7 @@ end
  -`max_num_of_processes_per_parallelcycle`: maximum number of processes for one request
 
 """
-function testdownload(NP::Int64, InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_CPU::Float64=1.0)
+function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_CPU::Float64=1.0)
 
     KB = 1024.0 #[bytes]
     MB = 1024.0 * KB
@@ -137,13 +137,13 @@ function testdownload(NP::Int64, InputDict::Dict{String,Any}, numofitr::Int64, M
     mem_per_requestid = 1.2 * sizeof(Stest) / GB #[GB] *for the safty, required memory is multiplied by 1.2
 
     max_num_of_processes_per_parallelcycle = floor(Int64, MAX_MEM_PER_CPU/mem_per_requestid)
-    estimated_downloadtime = now() + Second(round(2 * t1 * numofitr / NP))
+    estimated_downloadtime = now() + Second(round(2 * t1 * numofitr / nprocs()))
 
     #println(mem_per_requestid)
     #println(max_num_of_processes_per_parallelcycle)
     println("-------DOWNLOAD STATS SUMMARY--------")
 
-    println(@sprintf("Number of processors is %d.", NP))
+    println(@sprintf("Number of processes is %d.", nprocs()))
 
     totaldownloadsize = mem_per_requestid * numofitr
     if totaldownloadsize < MB

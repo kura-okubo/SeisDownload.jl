@@ -8,12 +8,12 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
 
     #==================================================#
     # Input Parameters
-    NP = 1 # number of processor
+    #NP = 1 # number of processor
     MAX_MEM_PER_CPU = 2.0 # [GB] maximum allocated memory for one cpu
     DownloadType = "Noise" # Choise of "Noise" or "Earthquake"
 
     network     = ["BP"]
-    station     = ["LCCB", "HQUAKE"]
+    station     = ["LCCB"]
     #station = ["CCRB","EADB","FROB","GHIB","JCNB","JCSB","LCCB","MMNB","SCYB","SMNB","VARB","VCAB"]
 
     location    = [""]
@@ -83,5 +83,5 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
         ])
 
     # mass request with input Dictionary
-    @test 0 == seisdownload(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
+    @test 0 == seisdownload(InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
 end

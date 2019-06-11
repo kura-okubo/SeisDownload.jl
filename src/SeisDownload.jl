@@ -7,7 +7,7 @@ include("downloadfunc.jl")
 using .Utils
 using .DownloadFunc
 
-using SeisIO, Dates, Printf, JLD2, FileIO,  Distributed
+using SeisIO, Dates, Printf, JLD2, FileIO, Distributed
 
 #------------------------------------------------------------------#
 #For the time being, we need remove_response function from obspy
@@ -21,25 +21,16 @@ export seisdownload
 
 
 """
-    ParallelSeisrequest(NP::Int, InputDict::Dict)
+    ParallelSeisrequest(InputDict::Dict MAX_MEM_PER_CPU::Float64=1.0)
 
     Request seismic data with Multiple cores.
 # Arguments
-- `NP`           : number of processors
 - `InputDict`    : dictionary which contains request information
 - `MAX_MEM_PER_CPU` : maximum available memory for 1 cpu [GB] (default = 1.0GB)
 """
-function seisdownload(NP::Int, InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
+function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
     Utils.initlogo()
-
-	addprocs(NP-1)
-
-	#@everywhere include("./src/SeisDownload.jl")
-	#@everywhere include("./src/utils.jl")
-	#using SeisIO, Dates, SeisDownload
-	#@everywhere using .SeisDownload, .Utils
-
 
 	DownloadType    = InputDict["DownloadType"]
 
@@ -75,7 +66,7 @@ function seisdownload(NP::Int, InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 		end
 
         #Test download to evaluate use of memory and estimate download time.
-		max_num_of_processes_per_parallelcycle = testdownload(NP, InputDict, length(starttimelist), MAX_MEM_PER_CPU)
+		max_num_of_processes_per_parallelcycle = testdownload(InputDict, length(starttimelist), MAX_MEM_PER_CPU)
 
         if max_num_of_processes_per_parallelcycle < 1
             error("Memory allocation is not enought (currently $MAX_MEM_PER_CPU [GB]). Please inclease MAX_MEM_PER_CPU or decrease number of stations")
@@ -123,7 +114,7 @@ function seisdownload(NP::Int, InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
     	        else
     	            #use part of processors
-	                startid2 = startid1 + mod(length(starttimelist), NP) - 1
+	                startid2 = startid1 + mod(length(starttimelist), nprocs()) - 1
 	                S = pmap(x -> seisdownload_NOISE(x, InputDict), startid1:startid2)
     	        end
 
@@ -171,7 +162,7 @@ function seisdownload(NP::Int, InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 		end
 
 		#Test download to evaluate use of memory and estimate download time.
-		max_num_of_processes_per_parallelcycle = testdownload(NP, InputDict, length(event), MAX_MEM_PER_CPU)
+		max_num_of_processes_per_parallelcycle = testdownload(InputDict, length(event), MAX_MEM_PER_CPU)
 
 		if max_num_of_processes_per_parallelcycle < 1
 			error("Memory allocation is not enought (currently $MAX_MEM_PER_CPU [GB]). Please inclease MAX_MEM_PER_CPU or decrease number of stations")
@@ -209,7 +200,7 @@ function seisdownload(NP::Int, InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
 				else
 					#use part of processors
-					startid2 = startid1 + mod(length(event), NP) - 1
+					startid2 = startid1 + mod(length(event), nprocs()) - 1
 					S = pmap(x -> seisdownload_EARTHQUAKE(x, InputDict), startid1:startid2)
 				end
 

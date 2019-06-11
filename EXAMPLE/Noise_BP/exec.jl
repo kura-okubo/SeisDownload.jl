@@ -1,13 +1,13 @@
-using SeisDownload, Dates
+@everywhere using SeisDownload
+using Dates
 
 #==================================================#
 # Input Parameters
-NP = 4 # number of processor
 MAX_MEM_PER_CPU = 2.0 # [GB] maximum allocated memory for one cpu
 DownloadType = "Noise" # Choise of "Noise" or "Earthquake"
 
 network     = ["BP"]
-station     = ["LCCB", "HQUAKE"]
+station     = ["LCCB", "MMNB"]
 #station = ["CCRB","EADB","FROB","GHIB","JCNB","JCSB","LCCB","MMNB","SCYB","SMNB","VARB","VCAB"]
 
 location    = [""]
@@ -77,4 +77,4 @@ InputDictionary = Dict([
     ])
 
 # mass request with input Dictionary
-seisdownload(NP, InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
+seisdownload(InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))

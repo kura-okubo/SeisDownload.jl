@@ -150,7 +150,8 @@ Download seismic data, removing instrumental response and saving into JLD2 file.
 """
 function check_and_get_data(ex::Expr, requeststr::String)
    try
-	   println(ex)
+	   #comment out below if you want to print contents of get_data()
+	   #println(ex)
        S = eval(ex);
        S.misc[1]["dlerror"] = 0
        return S
