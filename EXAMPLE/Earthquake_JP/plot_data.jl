@@ -94,4 +94,4 @@ for eventID = 1:length(event)
 end
 
 println("to finish plotting: press any key...")
-#readline()
+readline()

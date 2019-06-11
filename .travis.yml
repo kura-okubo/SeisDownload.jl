@@ -13,6 +13,14 @@ matrix:
     - julia: nightly
   fast_finish: true
 
+before_install:
+  - julia --project=docs/ -e 'using Pkg; Pkg.clone("https://github.com/tclements/Noise.jl");
+                                      Pkg.develop(PackageSpec(path=pwd()));
+                                      Pkg.instantiate();
+                                      Pkg.build("SeisDownload")'
+
+  - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
+
 notifications:
   email: false
 after_success:

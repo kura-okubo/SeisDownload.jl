@@ -137,7 +137,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
     mem_per_requestid = 1.2 * sizeof(Stest) / GB #[GB] *for the safty, required memory is multiplied by 1.2
 
     max_num_of_processes_per_parallelcycle = floor(Int64, MAX_MEM_PER_CPU/mem_per_requestid)
-    estimated_downloadtime = now() + Second(round(2 * t1 * numofitr / nprocs()))
+    estimated_downloadtime = now() + Second(round(3 * t1 * numofitr / nprocs()))
 
     #println(mem_per_requestid)
     #println(max_num_of_processes_per_parallelcycle)
@@ -153,7 +153,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
         sizeunit = "GB"
     end
 
-    println(@sprintf("Total download size will be %4.2f [%s].", 0.6 * totaldownloadsize, sizeunit)) #0.6: considering compression efficiency
+    println(@sprintf("Total download size will be %4.2f [%s].", 0.8 * totaldownloadsize, sizeunit)) #0.6: considering compression efficiency
     println(@sprintf("Download will finish at %s.", round(estimated_downloadtime, Dates.Second(1))))
 
     println("-------START DOWNLOADING-------------")
