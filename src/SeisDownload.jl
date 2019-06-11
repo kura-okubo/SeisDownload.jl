@@ -26,7 +26,7 @@ export seisdownload
     Request seismic data and save into jld2.
 # Arguments
 - `InputDict`    : dictionary which contains request information
-- `MAX_MEM_PER_CPU` : maximum available memory for 1 cpu [GB] (default = 1.0GB)
+- `MAX_MEM_PER_CPU` : maximum available memory for 1 cpu \[GB\] (default = 1.0GB)
 """
 function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
