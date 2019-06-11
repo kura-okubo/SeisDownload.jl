@@ -283,13 +283,9 @@ version = "0.3.2"
 
 [[Noise]]
 deps = ["DSP", "DataFrames", "Dates", "FFTW", "GLM", "Glob", "Interpolations", "JLD2", "LinearAlgebra", "Plots", "Printf", "SeisIO", "Statistics", "Test"]
-<<<<<<< HEAD
 git-tree-sha1 = "812d8d93989c4b237c7264d211c4445e08af4f28"
-=======
-git-tree-sha1 = "3a7281b64bbbc0b72d502c0486f580ef8627d7d7"
->>>>>>> d2f0cfab1636842b377c1a02a3a2f53cdc4fcb35
 repo-rev = "master"
-repo-url = "https://github.com/tclements/Noise.jl.git"
+repo-url = "https://github.com/tclements/Noise.jl"
 uuid = "8cc7c3c0-6b5d-11e9-39fe-c9cd0236e08b"
 version = "0.1.0"
 
@@ -411,11 +407,7 @@ uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 deps = ["Blosc", "Compat", "DSP", "Dates", "DelimitedFiles", "FFTW", "Glob", "HTTP", "LightXML", "LinearAlgebra", "Logging", "Polynomials", "Printf", "Random", "Sockets", "Statistics", "Test"]
 git-tree-sha1 = "b6a15b890afbc416f16071b790fc346115e0c76d"
 repo-rev = "master"
-<<<<<<< HEAD
-repo-url = "https://github.com/kura-okubo/SeisIO.jl.git"
-=======
 repo-url = "https://github.com/jpjones76/SeisIO.jl"
->>>>>>> dev
 uuid = "b372bb87-02dd-52bb-bcf6-c30dd83fd342"
 version = "0.2.0"
 
