@@ -13,27 +13,6 @@ matrix:
     - julia: nightly
   fast_finish: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-cache:
-  directories:
-  - $HOME/.ccache
-  - $HOME/.julia/registries # can we cache all of .julia?
-=======
->>>>>>> d2f0cfab1636842b377c1a02a3a2f53cdc4fcb35
-env:
-  #- MPI_IMPL=mpich
-  - MPI_IMPL=openmpi
-before_install:
-  - sh ./conf/travis-install-mpi.sh $MPI_IMPL
-  - export PATH=$HOME/OpenMPI/bin:$HOME/MPICH/bin:$PATH
-  - export CC=mpicc
-  - export FC=mpif90
-  - export TMPDIR=/tmp
-  - export OMPI_MCA_btl=self,tcp
-
-=======
->>>>>>> dev
 notifications:
   email: false
 after_success:
@@ -43,15 +22,8 @@ jobs:
     - stage: Documentation
       julia: 1.1
       script:
-
-      - julia -e 'using Pkg; Pkg.pkg"add https://github.com/kura-okubo/SeisIO.jl https://github.com/tclements/Noise.jl";'
-
-      - julia --project=docs/ -e 'using Pkg;
-                   Pkg.pkg"add https://github.com/kura-okubo/SeisIO.jl https://github.com/tclements/Noise.jl";
- Pkg.develop(PackageSpec(path=pwd()));
-         Pkg.instantiate();
-         Pkg.build("SeisDownload")'
-      - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
-
-
+          - julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd()));
+                                               Pkg.instantiate();
+                                               Pkg.build("SeisDownload")'
+          - julia -e 'using Pkg; cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
       after_success: skip
