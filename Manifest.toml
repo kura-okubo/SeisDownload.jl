@@ -283,7 +283,7 @@ version = "0.3.2"
 
 [[Noise]]
 deps = ["DSP", "DataFrames", "Dates", "FFTW", "GLM", "Glob", "Interpolations", "JLD2", "LinearAlgebra", "Plots", "Printf", "SeisIO", "Statistics", "Test"]
-git-tree-sha1 = "e40eeddb5f0685eb2bf4980bdbc5c523ea4fd00d"
+git-tree-sha1 = "812d8d93989c4b237c7264d211c4445e08af4f28"
 repo-rev = "master"
 repo-url = "https://github.com/tclements/Noise.jl"
 uuid = "8cc7c3c0-6b5d-11e9-39fe-c9cd0236e08b"

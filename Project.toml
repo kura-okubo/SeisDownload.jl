@@ -1,7 +1,7 @@
 name = "SeisDownload"
 uuid = "3c555a86-8617-11e9-35db-4175452cb573"
 authors = ["kurama"]
-version = "0.1.0"
+version = "1.0.0"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
@@ -13,10 +13,12 @@ Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
 SeisIO = "b372bb87-02dd-52bb-bcf6-c30dd83fd342"
 Suppressor = "fd094767-a336-5f1f-9728-57cf17d0bbfb"
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
 julia = "1.1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

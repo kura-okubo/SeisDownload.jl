@@ -7,7 +7,6 @@
 
 **Download seismic waveform from data server.**
 
-<img src="./icon.jpg" alt="logo" width="500"/>
 
 - Download from earthquake data center
 - Pre-processing (tapering, filling time gap, bandpass filter, downsampling) with [Noise.jl®](https://github.com/tclements/Noise.jl)
@@ -31,16 +30,11 @@ You can download data using `seisdownload`:
 
 to run the example script:
 
-  1. cd to `EXAMPLE/Download_BP`
-  2. type `sh run_downloadsctipt.sh`
+  1. cd to `EXAMPLE/Noise_BP`
+  2. type `julia exec.jl`
 
 More information; see `EXAMPLE` directory.
 
 ## Installation Q&A
 - Please run with obspy enviroment.
 Anaconda environment is useful; see [link](https://github.com/obspy/obspy/wiki/Installation-via-Anaconda). This package is stable with python 3.7.3.
-- Error when building MPI.jl (v0.9.0)<br>try:<br>
->brew install open-mpi (stable:v4.0.1) <br>
-brew install cmake (stable:v3.14.5) <br>
-then open julia, and<br>
-using Pkg; Pkg.build("MPI")
