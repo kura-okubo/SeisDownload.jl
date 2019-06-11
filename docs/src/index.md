@@ -20,9 +20,9 @@ You can download data using `seisdownload`:
 to run the example script:
 
   1. cp `EXAMPLE/` somewhere and cd `EXAMPLE/Noise_BP`
-  2. type `julia exec.jl`
+  2. type `julia -p 3 exec.jl`
 
-** Please specify number of processors with -p**
+**Please specify number of processes with -p**
 
 More information; see `EXAMPLE` directory.
 
