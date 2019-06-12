@@ -28,10 +28,12 @@ function remove_response_obspy!(S::SeisData, xf::String; pre_filt::NTuple{4,Floa
         numofzeropad = round(Int64, zeropadlen * S.fs[i])
         #z1 = zeros(numofzeropad)
         #---modify 2019/06/11: add fliped signal to avoid edge effect
-        zl = S.x[i][numofzeropad:-1:1]
-        zr = S.x[i][end:-1:end-numofzeropad+1]
-
-        x_withpad = vcat(zl,S.x[i],zr)
+        SeisIO.taper!(S)
+        #zl = S.x[i][numofzeropad:-1:1]
+        #zr = S.x[i][end:-1:end-numofzeropad+1]
+        z1 = zeros(numofzeropad)
+        x_withpad = vcat(z1,S.x[i],z1)
+        #x_withpad = vcat(zl,S.x[i],zr)
         trace=Trace.Trace()
         #trace.data = S.x[i]
         trace.data = x_withpad
