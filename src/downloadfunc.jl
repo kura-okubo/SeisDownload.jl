@@ -128,14 +128,14 @@ function seisdownload_EARTHQUAKE(startid, InputDict::Dict)
 				rm("$requeststr.$startid.xml")
 			else
 				mkpath("./stationxml")
-				mv("$requeststr.$startid.xml", "./stationxml/$requeststr.$startid.xml")
+				mv("$requeststr.$startid.xml", "./stationxml/$requeststr.$startid.xml", force=true)
 			end
 		else
 			if InputDict["IsXMLfileRemoved"]
 				rm("$requeststr.$startid.xml")
 			else
 				mkpath("./stationxml")
-				mv("$requeststr.$startid.xml", "./stationxml/$requeststr.$startid.xml")
+				mv("$requeststr.$startid.xml", "./stationxml/$requeststr.$startid.xml", force=true)
 			end
 	    end
 
