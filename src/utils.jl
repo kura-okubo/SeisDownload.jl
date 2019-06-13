@@ -155,7 +155,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
 
     println(@sprintf("Total download size will be %4.2f [%s].", 0.8 * totaldownloadsize, sizeunit)) #0.6: considering compression efficiency
     println(@sprintf("Download will finish at %s.", round(estimated_downloadtime, Dates.Second(1))))
-
+    println("*We have a time lag with downloading time above, like in 10 minutes or so.*")
     println("-------START DOWNLOADING-------------")
 
     return max_num_of_processes_per_parallelcycle

@@ -124,9 +124,19 @@ function seisdownload_EARTHQUAKE(startid, InputDict::Dict)
 
 	    if Stemp.misc[1]["dlerror"] == 0 && InputDict["IsResponseRemove"]
 	        Remove_response_obspy.remove_response_obspy!(Stemp, "$requeststr.$startid.xml", pre_filt=pre_filt, zeropadlen = float(30*60), output="VEL")
-	        rm("$requeststr.$startid.xml")
-	    else
-	        #rm("$requeststr.$startid.xml")
+			if InputDict["IsXMLfileRemoved"]
+				rm("$requeststr.$startid.xml")
+			else
+				mkpath("./stationxml")
+				mv("$requeststr.$startid.xml", "./stationxml/$requeststr.$startid.xml")
+			end
+		else
+			if InputDict["IsXMLfileRemoved"]
+				rm("$requeststr.$startid.xml")
+			else
+				mkpath("./stationxml")
+				mv("$requeststr.$startid.xml", "./stationxml/$requeststr.$startid.xml")
+			end
 	    end
 
 		append!(S, Stemp)
