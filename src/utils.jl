@@ -112,6 +112,9 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
         while true
             global t1 = @elapsed global Stest = seisdownload_NOISE(trial_id, InputDict) #[s]
             dl = [Stest[i].misc["dlerror"] for i in 1:size(Stest)[1]]
+            println(dl)
+            println(issubset(0, dl))
+            
             if issubset(0, dl)
                 break;
             else
