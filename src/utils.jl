@@ -34,7 +34,7 @@ function get_starttimelist(st::DateTime, et::DateTime, unittime::Real)
     reftime = st
     stlist = []
 
-    while reftime <= et
+    while reftime < et
         push!(stlist, string(reftime))
         reftime += Dates.Second(float(unittime))
     end
