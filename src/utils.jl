@@ -133,7 +133,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
     end
 
     if trial_id == numofitr - 1
-        error("all request returns error. Please check the station availability in your request.")
+        error("all requests you submitted with input dictionary was failed. Please check the station availability in your request.")
     end
 
     mem_per_requestid = 1.2 * sizeof(Stest) / GB #[GB] *for the safty, required memory is multiplied by 1.2
