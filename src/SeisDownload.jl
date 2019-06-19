@@ -103,12 +103,15 @@ function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
     	    # progress bar
 
-    	    while pitr <  length(starttimelist)
+    	    while pitr <= length(starttimelist)
 
     	        startid1 = pitr
     	        startid2 = pitr + max_num_of_processes_per_parallelcycle - 1
 
-    	        if startid2 <= length(starttimelist)
+    	        if startid1 == length(starttimelist)
+					S = pmap(x -> seisdownload_NOISE(x, InputDict), startid1:startid1)
+
+				elseif startid2 <= length(starttimelist)
     	            #use all processors
 	                S = pmap(x -> seisdownload_NOISE(x, InputDict), startid1:startid2)
 
@@ -189,12 +192,16 @@ function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 			#parallelization by time
 			pitr = 1
 
-			while pitr < length(event)
+			while pitr <= length(event)
 
 				startid1 = pitr
 				startid2 = pitr + max_num_of_processes_per_parallelcycle - 1
 
-				if startid2 <= length(event)
+				if startid1 == length(event)
+					#use one
+					S = pmap(x -> seisdownload_EARTHQUAKE(x, InputDict), startid1:startid1)
+
+				elseif startid2 <= length(event)
 					#use all processors
 					S = pmap(x -> seisdownload_EARTHQUAKE(x, InputDict), startid1:startid2)
 
