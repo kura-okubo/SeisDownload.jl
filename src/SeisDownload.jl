@@ -103,7 +103,7 @@ function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
     	    # progress bar
 
-    	    while pitr <=  length(starttimelist)
+    	    while pitr <  length(starttimelist)
 
     	        startid1 = pitr
     	        startid2 = pitr + max_num_of_processes_per_parallelcycle - 1
@@ -189,7 +189,7 @@ function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 			#parallelization by time
 			pitr = 1
 
-			while pitr <=  length(event)
+			while pitr < length(event)
 
 				startid1 = pitr
 				startid2 = pitr + max_num_of_processes_per_parallelcycle - 1
