@@ -22,11 +22,11 @@ jobs:
     - stage: Documentation
       julia: 1.1
       script:
-          - julia --project=docs/ -e 'using Pkg; Pkg.clone("https://github.com/tclements/Noise.jl");
+          - julia --project=docs/ -e 'using Pkg;
                                               Pkg.develop(PackageSpec(path=pwd()));
                                               Pkg.instantiate();
                                               Pkg.build("SeisDownload")'
-          - julia -e 'using Pkg; Pkg.pkg"add https://github.com/tclements/Noise.jl https://github.com/jpjones76/SeisIO.jl.git";
+          - julia -e 'using Pkg; Pkg.pkg"add https://github.com/jpjones76/SeisIO.jl.git";
                       cd(Pkg.dir("SeisDownload")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
 
       after_success: skip
