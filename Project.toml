@@ -13,6 +13,7 @@ PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
 SeisIO = "b372bb87-02dd-52bb-bcf6-c30dd83fd342"
 SeisNoise = "8cc7c3c0-6b5d-11e9-39fe-c9cd0236e08b"
 Suppressor = "fd094767-a336-5f1f-9728-57cf17d0bbfb"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
 julia = "1.1"
