@@ -7,13 +7,18 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
     # Write your own tests here.
 
     #==================================================#
+    using Distributed
+    addprocs(1)
+    @everywhere using SeisDownload
+    using Dates
+
+    #==================================================#
     # Input Parameters
-    #NP = 1 # number of processor
     MAX_MEM_PER_CPU = 2.0 # [GB] maximum allocated memory for one cpu
     DownloadType = "Noise" # Choise of "Noise" or "Earthquake"
 
     network     = ["BP"]
-    station     = ["LCCB"]
+    station     = ["LCCB", "MMNB"]
     #station = ["CCRB","EADB","FROB","GHIB","JCNB","JCSB","LCCB","MMNB","SCYB","SMNB","VARB","VCAB"]
 
     location    = [""]
@@ -22,8 +27,8 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
     src         = "NCEDC"
 
     # Time info for Noise case
-    starttime   = DateTime(2004,9,25,0,0,0)
-    endtime     = DateTime(2004,9,25,2,0,0)
+    starttime   = DateTime(2004,9,2,0,0,0)
+    endtime     = DateTime(2004,9,2,2,0,0)
 
     IsLocationBox = false
     method  = "FDSN" # Method to download data.
@@ -31,7 +36,7 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
 
     DL_time_unit = 3600 * 1 #3600 * 24 # Download tiem unit [s] more than one day is better to avoid artifacts of response removal
 
-    IsResponseRemove = false #whether instrumental response is removed or not
+    IsResponseRemove = true #whether instrumental response is removed or not
     pre_filt    = (0.001, 0.002, 10.0, 20.0) #prefilter tuple used obspy remove_response: taper between f1 and f2, f3 and f4 with obspy
 
     fodir       = "./dataset"
@@ -70,19 +75,20 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
     IsResponseRemove ? pre_filt = pre_filt : pre_filt = []
 
     InputDictionary = Dict([
-                "DownloadType"=> DownloadType,
-                "stationinfo" => stationinfo,
-                "starttime"   => starttime,
-                "endtime"     => endtime,
-                "DL_time_unit"=> DL_time_unit,
-                "IsLocationBox"   => IsLocationBox,
-                "reg"             => reg,
-                "IsResponseRemove"=> IsResponseRemove,
-                "pre_filt"        => pre_filt,
-                "fopath"          => fopath,
-                "IsXMLfileRemoved" => true
+            "DownloadType"=> DownloadType,
+            "stationinfo" => stationinfo,
+            "starttime"   => starttime,
+            "endtime"     => endtime,
+            "DL_time_unit"=> DL_time_unit,
+            "IsLocationBox"   => IsLocationBox,
+            "reg"             => reg,
+            "IsResponseRemove"=> IsResponseRemove,
+            "pre_filt"        => pre_filt,
+            "fopath"          => fopath,
+            "IsXMLfileRemoved" => true
         ])
 
     # mass request with input Dictionary
     @test 0 == seisdownload(InputDictionary, MAX_MEM_PER_CPU=float(MAX_MEM_PER_CPU))
+
 end
