@@ -70,16 +70,17 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
     IsResponseRemove ? pre_filt = pre_filt : pre_filt = []
 
     InputDictionary = Dict([
-            "DownloadType"=> DownloadType,
-            "stationinfo" => stationinfo,
-            "starttime"   => starttime,
-            "endtime"     => endtime,
-            "DL_time_unit"=> DL_time_unit,
-            "IsLocationBox"   => IsLocationBox,
-            "reg"             => reg,
-            "IsResponseRemove"=> IsResponseRemove,
-            "pre_filt"        => pre_filt,
-            "fopath"          => fopath
+                "DownloadType"=> DownloadType,
+                "stationinfo" => stationinfo,
+                "starttime"   => starttime,
+                "endtime"     => endtime,
+                "DL_time_unit"=> DL_time_unit,
+                "IsLocationBox"   => IsLocationBox,
+                "reg"             => reg,
+                "IsResponseRemove"=> IsResponseRemove,
+                "pre_filt"        => pre_filt,
+                "fopath"          => fopath,
+                "IsXMLfileRemoved" => true
         ])
 
     # mass request with input Dictionary

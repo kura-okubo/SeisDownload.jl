@@ -24,7 +24,7 @@ Then from the Julia command prompt:
 You can download data using `seisdownload`:
 to run the example script:
 
-  1. cp `EXAMPLE/` somewhere and cd `EXAMPLE/Noise_BP`
+  1. cp `~/.julia/packages/SeisDownload/(versionID)/EXAMPLE/` somewhere and cd `EXAMPLE/Noise_BP`
   2. type `julia -p 3 exec.jl`
 
 - `-p` is num of **additional** processes (= np - 1 parallelizes your processes with your all processors).  
