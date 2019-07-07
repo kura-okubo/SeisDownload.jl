@@ -36,7 +36,7 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
 
     DL_time_unit = 3600 * 1 #3600 * 24 # Download tiem unit [s] more than one day is better to avoid artifacts of response removal
 
-    IsResponseRemove = true #whether instrumental response is removed or not
+    IsResponseRemove = false #whether instrumental response is removed or not
     pre_filt    = (0.001, 0.002, 10.0, 20.0) #prefilter tuple used obspy remove_response: taper between f1 and f2, f3 and f4 with obspy
 
     fodir       = "./dataset"
