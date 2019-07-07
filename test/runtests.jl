@@ -1,24 +1,19 @@
 using SeisDownload
 using Test
 
-using SeisIO, Dates #Please load SeisIO here to correctly define type of structure "SeisData"
+using SeisIO, Dates  #Please load SeisIO here to correctly define type of structure "SeisData"
 
 @testset "SeisDownload.jl" begin
     # Write your own tests here.
 
     #==================================================#
-    using Distributed
-    addprocs(1)
-    @everywhere using SeisDownload
-    using Dates
-
     #==================================================#
     # Input Parameters
     MAX_MEM_PER_CPU = 2.0 # [GB] maximum allocated memory for one cpu
     DownloadType = "Noise" # Choise of "Noise" or "Earthquake"
 
     network     = ["BP"]
-    station     = ["LCCB", "MMNB"]
+    station     = ["LCCB"]
     #station = ["CCRB","EADB","FROB","GHIB","JCNB","JCSB","LCCB","MMNB","SCYB","SMNB","VARB","VCAB"]
 
     location    = [""]
@@ -27,8 +22,8 @@ using SeisIO, Dates #Please load SeisIO here to correctly define type of structu
     src         = "NCEDC"
 
     # Time info for Noise case
-    starttime   = DateTime(2004,9,2,0,0,0)
-    endtime     = DateTime(2004,9,2,2,0,0)
+    starttime   = DateTime(2004,9,3,0,0,0)
+    endtime     = DateTime(2004,9,3,3,0,0)
 
     IsLocationBox = false
     method  = "FDSN" # Method to download data.
