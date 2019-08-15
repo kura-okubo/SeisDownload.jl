@@ -139,6 +139,10 @@ function seisdownload_EARTHQUAKE(startid, InputDict::Dict)
 			end
 	    end
 
+		#fill gap with zero
+		SeisIO.ungap!(Stemp, m=true)
+		replace!(Stemp.x, NaN=>0)
+
 		append!(S, Stemp)
 	end
 

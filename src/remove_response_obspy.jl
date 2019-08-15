@@ -29,6 +29,11 @@ function remove_response_obspy!(S::SeisData, xf::String; pre_filt::NTuple{4,Floa
         #z1 = zeros(numofzeropad)
         #---modify 2019/06/11: add fliped signal to avoid edge effect
         #SeisIO.taper!(S)
+
+        if length(S.x[i]) < numofzeropad
+            numofzeropad = round(Int64, length(S.x[i])/2)
+        end
+
         zl = S.x[i][numofzeropad:-1:1]
         zr = S.x[i][end:-1:end-numofzeropad+1]
         #z1 = zeros(numofzeropad)

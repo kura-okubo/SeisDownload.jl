@@ -17,13 +17,13 @@ src         = "NCEDC"
 
 # Time info for Noise case
 starttime   = DateTime(2004,9,25,0,0,0)
-endtime     = DateTime(2004,9,25,12,0,0)
+endtime     = DateTime(2004,9,25,3,0,0)
 
 IsLocationBox = false
 method  = "FDSN" # Method to download data.
 datasource = "NCEDC" # currently, only one src can be specified.
 
-DL_time_unit = 3600 * 2 #3600 * 24 # Download tiem unit [s] more than one day is better to avoid artifacts of response removal
+DL_time_unit = 3600 * 1 #3600 * 24 # Download tiem unit [s] more than one day is better to avoid artifacts of response removal
 
 IsResponseRemove = true #whether instrumental response is removed or not
 pre_filt    = (0.001, 0.002, 10.0, 20.0) #prefilter tuple used obspy remove_response: taper between f1 and f2, f3 and f4 with obspy

@@ -117,7 +117,7 @@ function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
     	        else
     	            #use part of processors
-	                startid2 = startid1 + mod(length(starttimelist), nprocs()) - 1
+	                startid2 = startid1 + mod(length(starttimelist), max_num_of_processes_per_parallelcycle) - 1
 	                S = pmap(x -> seisdownload_NOISE(x, InputDict), startid1:startid2)
     	        end
 
@@ -207,7 +207,7 @@ function seisdownload(InputDict::Dict; MAX_MEM_PER_CPU::Float64=1.0)
 
 				else
 					#use part of processors
-					startid2 = startid1 + mod(length(event), nprocs()) - 1
+					startid2 = startid1 + mod(length(event), max_num_of_processes_per_parallelcycle) - 1
 					S = pmap(x -> seisdownload_EARTHQUAKE(x, InputDict), startid1:startid2)
 				end
 
