@@ -37,6 +37,10 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 		InputDict["get_data_opt"] = [true, true, true, true, false]#: [unscale, demean, detrend, taper, ungap]
 	end
 
+	if !haskey(InputDict, "savesamplefreq")
+		InputDict["savesamplefreq"] = false # default margin: 5 minutes
+	end
+
 	if !haskey(InputDict, "download_margin")
 		InputDict["download_margin"] = 5 * 60 # default margin: 5 minutes
 	end
@@ -96,13 +100,21 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 			if length(Stemp[j].x) > 2 * marginidx
 				Stemp.x[j] = Stemp.x[j][marginidx+1:end-marginidx]
 				Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
+				Stemp.t[j][end,1] = length(Stemp.x[j])
 			else
 				#zero pad because this does not have so much data
 				Stemp.x[j] = zeros(length(Stemp[j].x))
 				Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
+				Stemp.t[j][end,1] = length(Stemp.x[j])
 			end
 		end
 
+		# downsample
+		if InputDict["savesamplefreq"] isa Number
+			println("resample")
+			SeisIO.resample!(Stemp, fs=float(InputDict["savesamplefreq"]))
+		end
+		
 		ymd = split(starttimelist[startid], r"[A-Z]")
 		(y, m, d) = split(ymd[1], "-")
 		j = md2j(y, m, d)
