@@ -7,7 +7,7 @@ using .DownloadFunc
 
 using SeisIO, Printf, Dates, JLD2, FileIO, Distributed
 
-export get_starttimelist, get_timestamplist, get_stationlist, testdownload, initlogo
+export get_starttimelist, get_timestamplist, get_stationlist, testdownload, convert_tmpfile, printparams, initlogo
 
 """
 
@@ -97,22 +97,20 @@ end
 """
 function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_CPU::Float64=1.0)
 
-    KB = 1024.0 #[bytes]
-    MB = 1024.0 * KB
-    GB = 1024.0 * MB
-
     DownloadType    = InputDict["DownloadType"]
 
-    trial_id        = 1
-
+    trial_id          = 1
+    test_suceededflag = false
     println("-------TEST DOWNLOAD START-----------")
 
     if DownloadType == "Noise" || DownloadType == "noise"
 
         while true
-            global t1 = @elapsed global Stest = seisdownload_NOISE(trial_id, InputDict) #[s]
-            dl = [Stest[i].misc["dlerror"] for i in 1:size(Stest)[1]]
+            global t1 = @elapsed global dlerror = seisdownload_NOISE(trial_id, InputDict) #[s]
+
+            dl = [dlerror[i] for i in 1:length(dlerror)]
             if issubset(0, dl)
+                test_suceededflag = true
                 break;
             else
                 trial_id += 1
@@ -122,9 +120,10 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
     elseif  DownloadType == "Earthquake" || DownloadType == "earthquake"
 
         while true
-            global t1 = @elapsed global Stest = seisdownload_EARTHQUAKE(trial_id, InputDict) #[s]
-            dl = [Stest[i].misc["dlerror"] for i in 1:size(Stest)[1]]
+            global t1 = @elapsed global dlerror = seisdownload_EARTHQUAKE(trial_id, InputDict) #[s]
+            dl = [dlerror[i] for i in 1:length(dlerror)]
             if issubset(0, dl)
+                test_suceededflag = true
                 break;
             else
                 trial_id += 1
@@ -132,14 +131,11 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
         end
     end
 
-    if trial_id == numofitr - 1
-        error("all requests you submitted with input dictionary was failed. Please check the station availability in your request.")
+    if test_suceededflag != true
+        error("All requests you submitted with input dictionary was failed. Please check the station availability in your request.")
     end
 
-    mem_per_requestid = 1.2 * sizeof(Stest) / GB #[GB] *for the safty, required memory is multiplied by 1.2
-
-    max_num_of_processes_per_parallelcycle = floor(Int64, MAX_MEM_PER_CPU/mem_per_requestid)
-    estimated_downloadtime = now() + Second(round(3 * t1 * numofitr / nprocs()))
+    estimated_downloadtime = now() + Second(round(3 * t1 * numofitr / (Sys.CPU_THREADS-1)))
 
     #println(mem_per_requestid)
     #println(max_num_of_processes_per_parallelcycle)
@@ -147,23 +143,139 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
 
     println(@sprintf("Number of processes is %d.", nprocs()))
 
-    totaldownloadsize = mem_per_requestid * numofitr
-    if totaldownloadsize < MB
-        totaldownloadsize = totaldownloadsize * GB / MB #[MB]
+    # evaluate total download size by searching tmp directory
+    s = read(`du -s -k "./seisdownload_tmp"`, String)
+    hdduse = parse(Int, split(s)[1])
+
+    totaldownloadsize = hdduse * numofitr
+    if totaldownloadsize < 1024 * 1024 # less than 1 GB
+        totaldownloadsize = totaldownloadsize / 1024 #[MB]
         sizeunit = "MB"
     else
+        totaldownloadsize = totaldownloadsize / 1024 / 1024
         sizeunit = "GB"
     end
 
-    println(@sprintf("Total download size will be %4.2f [%s].", 0.8 * totaldownloadsize, sizeunit)) #0.6: considering compression efficiency
+    println(@sprintf("Total download size will be %4.2f [%s].", 0.8 * totaldownloadsize, sizeunit)) #0.8: considering compression efficiency
     println(@sprintf("Download will finish at %s.", round(estimated_downloadtime, Dates.Second(1))))
     println("*We have a time lag with downloading time above, like in 10 minutes or so.*")
     println("*This estimation also changes if some download requests fail and are skipped.*")
     println("-------START DOWNLOADING-------------")
 
-    return max_num_of_processes_per_parallelcycle
+    return nothing
 
 end
+
+"""
+convert_tmpfile(InputDict::Dict)
+
+convert temporal file in "./seisdownload_tmp" to prescribed format.
+It has salvage mode, which allows to compile the temporal files in the case of failing during the download.
+"""
+function convert_tmpfile(InputDict::Dict; salvage::Bool=false)
+
+    println("-------START CONVERTING-------------")
+    paths = ls("./seisdownload_tmp/")
+    fopath = InputDict["fopath"]
+    fmt = InputDict["outputformat"]
+
+    file = jldopen(fopath, "w")
+
+    #save HEADER information
+    if fmt == "JLD2"
+        file["info/DLtimestamplist"] = InputDict["DLtimestamplist"];
+        file["info/starttime"]       = InputDict["starttime"]
+        file["info/endtime"]         = InputDict["endtime"]
+        file["info/DL_time_unit"]    = InputDict["DL_time_unit"]
+
+    end
+
+    stationlist     = []
+    DLtimestamplist = []
+    varnamelist     = []
+
+    @simd for path in paths
+        #println(path)
+        try
+            S = rseis(path)[1]
+            #println(S)
+
+            for ii = 1:S.n #loop at each seis channel
+
+                # make station list
+                staid = S[ii].id
+                if isempty(filter(x -> x==staid, stationlist))
+                    push!(stationlist, staid)
+                end
+
+                # save data (checking whether it's already in the jld2 because it causes an error)
+                #parse info
+                s_str = string(u2d(S[ii].t[1,2]*1e-6))
+
+                # if time id is not matched with DLtimestamplist, this download is discarded for consistency even if it has some data.
+                # here we also indirectly check if download_margin is correctly manipulated.
+                if !isempty(filter(x -> x==s_str[1:19], InputDict["starttimelist"]))
+
+                    # select output format
+                    if fmt == "JLD2"
+                        yj = parse(Int64, s_str[1:4])
+                        mj = parse(Int64, s_str[6:7])
+                        dj = parse(Int64, s_str[9:10])
+                        tj = string(s_str)[11:19]
+
+                        djm2j = md2j(yj, mj, dj)
+                        groupname = string(yj)*"."*string(djm2j)*"."*tj #Year_Julianday_Starttime
+                        varname = joinpath(groupname, staid)
+
+                        if isempty(filter(x -> x==varname, varnamelist))
+                            push!(varnamelist, varname)
+                            file[varname] = S[ii]
+                        end
+                        # @info "save data $varname"
+                    else
+                        error("output format in $fmt is not implemented yet.")
+                    end
+
+                end
+            end
+
+            if !InputDict["Istmpfilepreserved"]
+    			rm(path)
+    		end
+
+        catch y
+            println(y)
+        end
+    end
+
+    if fmt == "JLD2"
+        # save final station list
+        file["info/stationlist"] = stationlist
+    end
+
+    JLD2.close(file)
+
+    return nothing
+end
+
+
+"""
+printparams(param::Dict)
+
+print parameters
+"""
+function printparams(param::Dict)
+    printstyled("-----------Input Parameters-----------\n"; color=:cyan, bold=true)
+    for key in keys(param)
+        if length(string(param["$key"])) > 60
+            param_str = string(param["$key"])[1:30]*"..."
+        else
+            param_str = string(param["$key"])
+        end
+        println(@sprintf("%-24s = %-10s", key, param_str))
+    end
+end
+
 
 """
 initlogo()
@@ -182,7 +294,7 @@ function initlogo()
     |_____/  \\___||_||___/|_____/  \\___/  \\_/\\_/  |_| |_||_| \\___/  \\__,_| \\__,_|
                       _         _  _
                      | |       | |(_)           |
-    __      __       | | _   _ | | _   __ _     | v1.0 (Last update 06/06/2019)
+    __      __       | | _   _ | | _   __ _     | v1.2 (Last update 08/15/2019)
     \\ \\ /\\ / /   _   | || | | || || | / _` |    | © Kurama Okubo
      \\ V  V /_  | |__| || |_| || || || (_| |    |
       \\_/\\_/(_)  \\____/  \\__,_||_||_| \\__,_|    |
