@@ -24,6 +24,8 @@ using SeisIO, Dates  #Please load SeisIO here to correctly define type of struct
     DL_time_unit = 3600 * 1 #3600 * 24 # Download time unit [s] more than one day is better to avoid artifacts of response removal
     download_margin = 60 * 5 #Int, [s] margin of both edges while downloading data to avoid the edge effect due to instrument response removal.
 
+    savesamplefreq = 20.0 #[1/s] when saving the data, downsample at this freq
+
     IsResponseRemove = true #whether instrumental response is removed or not
     #pre_filt    = (0.001, 0.002, 10.0, 20.0) #prefilter tuple used obspy remove_response: taper between f1 and f2, f3 and f4 with obspy
 
@@ -73,21 +75,22 @@ using SeisIO, Dates  #Please load SeisIO here to correctly define type of struct
     IsLocationBox ? reg=locationbox : reg=[]
 
     InputDictionary = Dict([
-            "MAX_MEM_PER_CPU" => MAX_MEM_PER_CPU,
-            "DownloadType"=> DownloadType,
-            "stationinfo" => stationinfo,
-            "starttime"   => starttime,
-            "endtime"     => endtime,
-            "DL_time_unit"     => DL_time_unit,
-            "IsLocationBox"    => IsLocationBox,
-            "reg"              => reg,
-            "IsResponseRemove" => IsResponseRemove,
-            "download_margin"  => download_margin,
-            "fopath"           => fopath,
-            "outputformat"     => outputformat,
-            "Istmpfilepreserved" => Istmpfilepreserved,
-            "IsXMLfileRemoved" =>true
-        ])
+        "MAX_MEM_PER_CPU" => MAX_MEM_PER_CPU,
+        "DownloadType"=> DownloadType,
+        "stationinfo" => stationinfo,
+        "starttime"   => starttime,
+        "endtime"     => endtime,
+        "DL_time_unit"     => DL_time_unit,
+        "IsLocationBox"    => IsLocationBox,
+        "reg"              => reg,
+        "IsResponseRemove" => IsResponseRemove,
+        "download_margin"  => download_margin,
+        "fopath"           => fopath,
+        "savesamplefreq"   => savesamplefreq,
+        "outputformat"     => outputformat,
+        "Istmpfilepreserved" => Istmpfilepreserved,
+        "IsXMLfileRemoved" =>true
+    ])
 
     # mass request with input Dictionary
     @test 0 == SeisDownload.seisdownload(InputDictionary)
