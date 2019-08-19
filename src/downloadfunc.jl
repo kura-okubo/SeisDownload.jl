@@ -95,20 +95,21 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 
 		# manipulate download_margin
 		if Stemp.misc[1]["dlerror"] != 1
-			for j = 1:Stemp.n
-				marginidx = trunc(Int64, InputDict["download_margin"] * Stemp[j].fs)
-				# check if data length is too short before removing margin
-				if length(Stemp[j].x) > 2 * marginidx
-					Stemp.x[j] = Stemp.x[j][marginidx+1:end-marginidx]
-					Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
-					Stemp.t[j][end,1] = length(Stemp.x[j])
-				else
-					#zero pad because this does not have so much data
-					Stemp.x[j] = zeros(length(Stemp[j].x))
-					Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
-					Stemp.t[j][end,1] = length(Stemp.x[j])
-				end
-			end
+			manipulate_tmatrix!(Stemp, starttime, InputDict)
+			# for j = 1:Stemp.n
+			# 	marginidx = trunc(Int64, InputDict["download_margin"] * Stemp[j].fs)
+			# 	# check if data length is too short before removing margin
+			# 	if length(Stemp[j].x) > 2 * marginidx
+			# 		Stemp.x[j] = Stemp.x[j][marginidx+1:end-marginidx]
+			# 		Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
+			# 		Stemp.t[j][end,1] = length(Stemp.x[j])
+			# 	else
+			# 		#zero pad because this does not have so much data
+			# 		Stemp.x[j] = zeros(length(Stemp[j].x))
+			# 		Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
+			# 		Stemp.t[j][end,1] = length(Stemp.x[j])
+			# 	end
+			# end
 
 			# downsample
 			if InputDict["savesamplefreq"] isa Number
@@ -257,5 +258,58 @@ function check_and_get_data(ex::Expr, requeststr::String)
 		return S
 	end
 end
+
+
+"""
+    manipulate_tmatrix!(S::SeisData, InputDict::Dict{String,Any})
+
+    manipulate time matrix to remove download margin
+
+"""
+
+function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{String,Any})
+
+    print("before")
+    println(S)
+    for i = 1:S.n
+        download_margin = InputDict["download_margin"]
+        DL_time_unit    = InputDict["DL_time_unit"]
+        #requeststr = "NC.PLO..EHZ" #NC.PCC..EHZ
+        requeststr = S.id[i] #NC.PCC..EHZ
+
+        tvec = collect(0:S.t[i][end,1]-1) ./ S.fs[i]
+        tlen = trunc(Int, DL_time_unit * S.fs[i])
+
+        si = findfirst(x -> tvec[x] >= download_margin, 1:length(tvec))
+
+        #check if data is within request time window AND start time is equal to what is requested
+		println([si, download_margin * S.fs[i]])
+		println([string(u2d(S.t[i][1,2] * 1e-6))[1:19],starttime])
+        if si < download_margin * S.fs[i] || string(u2d(S.t[i][1,2] * 1e-6))[1:19] != starttime
+            println("data missing or starttime not match.")
+            S.misc[i]["dlerror"] = 1
+            S.x[i] = zeros(0)
+        else
+            println("manipulate")
+            ei = trunc(Int, min(si+tlen-1, S.t[i][end,1]))
+            x_shifted = zeros(tlen)
+            copyto!(x_shifted, S.x[i][si:ei])
+
+            # manipulate time matrix
+            t_shifted = deepcopy(hcat(S.t[i][:,1] .- (si-1), S.t[i][:,2]))
+            # remove gap outside of time window
+            ri = findall(x -> t_shifted[x, 1] < 1 || t_shifted[x, 1] >  tlen, 1:size(t_shifted, 1))
+            t_shifted = t_shifted[setdiff(1:end, ri), :]
+            t_init = [1 trunc(Int, S.t[i][1,2] + float(download_margin)*1e6)]
+            t_last = [tlen 0]
+            t_shifted = vcat(t_init, t_shifted, t_last)
+            S.x[i] = x_shifted
+            S.t[i] = t_shifted
+        end
+    end
+    print("after")
+    println(S)
+end
+
 
 end

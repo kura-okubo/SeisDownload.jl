@@ -87,7 +87,7 @@ function get_stationlist(network::Array{String, 1}, station::Array{String, 1}, l
 end
 
 """
-    testdownload(InputDict::Dict{String,Any}, MAX_MEM_PER_CPU::Float64=1.0, numofitr::Int64)
+    testdownload(InputDict::Dict{String,Any} numofitr::Int64)
 
     print stats of download and return max_num_of_processes_per_parallelcycle
 
@@ -95,7 +95,7 @@ end
  -`max_num_of_processes_per_parallelcycle`: maximum number of processes for one request
 
 """
-function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_CPU::Float64=1.0)
+function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
 
     DownloadType    = InputDict["DownloadType"]
 
