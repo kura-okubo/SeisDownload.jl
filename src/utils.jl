@@ -101,7 +101,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
 
     trial_id          = 1
     trial_sta         = 1
-    InputDict_test = InputDict
+    InputDict_test = deepcopy(InputDict)
     test_suceededflag = false
     println("-------TEST DOWNLOAD START-----------")
 
