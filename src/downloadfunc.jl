@@ -111,11 +111,11 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 
 		# downsample
 		if InputDict["savesamplefreq"] isa Number
-			for j = 1:Stemp.n
-				if Stemp.fs[j] > InputDict["savesamplefreq"]
-					#println("resample")
-					SeisIO.resample!(Stemp, chans=j, fs=float(InputDict["savesamplefreq"]))
-				end
+			#make resample id list
+			resampleids = findall(x = Stemp.fs[x]>InputDict["savesamplefreq"], Stemp.fs)
+			println(resampleids)
+			if !isempty(resampleids)
+				SeisIO.resample!(Stemp, chans=resampleids, fs=float(InputDict["savesamplefreq"]))
 			end
 		end
 
