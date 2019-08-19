@@ -34,7 +34,14 @@ function seisdownload(InputDict::Dict)
 
 	DownloadType    = InputDict["DownloadType"]
 
-	mkpath("./seisdownload_tmp")
+	fodir = ""
+	sp = splitpath(InputDict["fopath"])
+	for i = 1:length(sp)-1
+		fodir = joinpath(fodir, sp[i])
+	end
+	tmppath = joinpath(fodir, "./seisdownload_tmp")
+	InputDict["tmppath"] = tmppath
+	mkpath(tmppath)
 
     if DownloadType == "Noise" || DownloadType == "noise"
 
@@ -78,7 +85,7 @@ function seisdownload(InputDict::Dict)
 		println(@sprintf("Total convert time:%8.4f[s]", t_convert))
 
 		if !InputDict["Istmpfilepreserved"]
-			rm("./seisdownload_tmp", recursive=true, force=true)
+			rm(tmppath, recursive=true, force=true)
 		end
 
     elseif  DownloadType == "Earthquake" || DownloadType == "earthquake"

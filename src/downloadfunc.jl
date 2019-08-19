@@ -113,7 +113,7 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 		if InputDict["savesamplefreq"] isa Number
 			#make resample id list
 			resampleids = findall(x -> Stemp.fs[x]>InputDict["savesamplefreq"], 1:Stemp.n)
-			println(resampleids)
+			#println(resampleids)
 			if !isempty(resampleids)
 				SeisIO.resample!(Stemp, chans=resampleids, fs=float(InputDict["savesamplefreq"]))
 			end
@@ -130,7 +130,7 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 					'.')
 
 		# save as intermediate binary file
-		t_write = @elapsed wseis("./seisdownload_tmp/"*fname_out, Stemp)
+		t_write = @elapsed wseis(InputDict["tmppath"]*"/"*fname_out, Stemp)
 
 		if InputDict["IsXMLfileRemoved"] && ispath("$requeststr.$startid.xml")
 			rm("$requeststr.$startid.xml")

@@ -100,42 +100,53 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
     DownloadType    = InputDict["DownloadType"]
 
     trial_id          = 1
+    trial_sta         = 1
+    InputDict_test = InputDict
     test_suceededflag = false
     println("-------TEST DOWNLOAD START-----------")
 
     if DownloadType == "Noise" || DownloadType == "noise"
 
-        while true
-            global t1 = @elapsed global dlerror = seisdownload_NOISE(trial_id, InputDict) #[s]
+        while !test_suceededflag && trial_id < length(InputDict["starttimelist"])
+            # select test request
+            for j = 1:length(InputDict["DLtimestamplist"])
+                InputDict_test["stationinfo"]["stationlist"] = [InputDict["stationinfo"]["stationlist"][trial_sta]]
 
-            dl = [dlerror[i] for i in 1:length(dlerror)]
-            if issubset(0, dl)
-                test_suceededflag = true
-                break;
-            else
-                trial_id += 1
+                global t1 = @elapsed global dlerror = seisdownload_NOISE(trial_id, InputDict_test) #[s]
+
+                dl = [dlerror[i] for i in 1:length(dlerror)]
+                if issubset(0, dl)
+                    test_suceededflag = true
+                    break;
+                end
             end
+            trial_id += 1
         end
 
     elseif  DownloadType == "Earthquake" || DownloadType == "earthquake"
 
-        while true
-            global t1 = @elapsed global dlerror = seisdownload_EARTHQUAKE(trial_id, InputDict) #[s]
-            dl = [dlerror[i] for i in 1:length(dlerror)]
-            if issubset(0, dl)
-                test_suceededflag = true
-                break;
-            else
-                trial_id += 1
+        while !test_suceededflag && trial_id < length(InputDict["starttimelist"])
+            # select test request
+            for j = 1:length(InputDict["DLtimestamplist"])
+                InputDict_test["stationinfo"]["stationlist"] = InputDict["stationinfo"]["stationlist"][trial_sta]
+
+                global t1 = @elapsed global dlerror = seisdownload_EARTHQUAKE(trial_id, InputDict_test) #[s]
+
+                dl = [dlerror[i] for i in 1:length(dlerror)]
+                if issubset(0, dl)
+                    test_suceededflag = true
+                    break;
+                end
             end
+            trial_id += 1
         end
     end
 
-    if test_suceededflag != true
+    if !test_suceededflag
         error("All requests you submitted with input dictionary was failed. Please check the station availability in your request.")
     end
 
-    estimated_downloadtime = now() + Second(round(3 * t1 * numofitr / (Sys.CPU_THREADS-1)))
+    estimated_downloadtime = now() + Second(round(3 * t1 * length(InputDict["DLtimestamplist"]) * numofitr / nprocs()))
 
     #println(mem_per_requestid)
     #println(max_num_of_processes_per_parallelcycle)
@@ -144,7 +155,8 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64, MAX_MEM_PER_
     println(@sprintf("Number of processes is %d.", nprocs()))
 
     # evaluate total download size by searching tmp directory
-    s = read(`du -s -k "./seisdownload_tmp"`, String)
+    tmppath = InputDict["tmppath"]
+    s = read(`du -s -k $tmppath`, String)
     hdduse = parse(Int, split(s)[1])
 
     totaldownloadsize = hdduse * numofitr
@@ -175,7 +187,7 @@ It has salvage mode, which allows to compile the temporal files in the case of f
 function convert_tmpfile(InputDict::Dict; salvage::Bool=false)
 
     println("-------START CONVERTING-------------")
-    paths = ls("./seisdownload_tmp/")
+    paths = ls(InputDict["tmppath"])
     fopath = InputDict["fopath"]
     fmt = InputDict["outputformat"]
 
