@@ -94,28 +94,30 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 		end
 
 		# manipulate download_margin
-		for j = 1:Stemp.n
-			marginidx = trunc(Int64, InputDict["download_margin"] * Stemp[j].fs)
-			# check if data length is too short before removing margin
-			if length(Stemp[j].x) > 2 * marginidx
-				Stemp.x[j] = Stemp.x[j][marginidx+1:end-marginidx]
-				Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
-				Stemp.t[j][end,1] = length(Stemp.x[j])
-			else
-				#zero pad because this does not have so much data
-				Stemp.x[j] = zeros(length(Stemp[j].x))
-				Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
-				Stemp.t[j][end,1] = length(Stemp.x[j])
+		if Stemp.misc[1]["dlerror"] != 1
+			for j = 1:Stemp.n
+				marginidx = trunc(Int64, InputDict["download_margin"] * Stemp[j].fs)
+				# check if data length is too short before removing margin
+				if length(Stemp[j].x) > 2 * marginidx
+					Stemp.x[j] = Stemp.x[j][marginidx+1:end-marginidx]
+					Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
+					Stemp.t[j][end,1] = length(Stemp.x[j])
+				else
+					#zero pad because this does not have so much data
+					Stemp.x[j] = zeros(length(Stemp[j].x))
+					Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
+					Stemp.t[j][end,1] = length(Stemp.x[j])
+				end
 			end
-		end
 
-		# downsample
-		if InputDict["savesamplefreq"] isa Number
-			#make resample id list
-			resampleids = findall(x -> Stemp.fs[x]>InputDict["savesamplefreq"], 1:Stemp.n)
-			#println(resampleids)
-			if !isempty(resampleids)
-				SeisIO.resample!(Stemp, chans=resampleids, fs=float(InputDict["savesamplefreq"]))
+			# downsample
+			if InputDict["savesamplefreq"] isa Number
+				#make resample id list
+				resampleids = findall(x -> Stemp.fs[x]>InputDict["savesamplefreq"], 1:Stemp.n)
+				#println(resampleids)
+				if !isempty(resampleids)
+					SeisIO.resample!(Stemp, chans=resampleids, fs=float(InputDict["savesamplefreq"]))
+				end
 			end
 		end
 
