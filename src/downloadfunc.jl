@@ -114,7 +114,7 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 			for j = 1:Stemp.n
 				if Stemp.fs[j] > InputDict["savesamplefreq"]
 					#println("resample")
-					SeisIO.resample!(Stemp[j], fs=float(InputDict["savesamplefreq"]))
+					SeisIO.resample!(Stemp, chans=j, fs=float(InputDict["savesamplefreq"]))
 				end
 			end
 		end
