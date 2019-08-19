@@ -141,8 +141,8 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 
 		push!(dlerror, Stemp.misc[1]["dlerror"])
 
-		print("[dltime, wtime, fraction of writing]: ")
-		println([t_dl, t_write, t_write/(t_dl+t_write)])
+		#print("[dltime, wtime, fraction of writing]: ")
+		#println([t_dl, t_write, t_write/(t_dl+t_write)])
     end
 
     return dlerror
@@ -269,8 +269,8 @@ end
 
 function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{String,Any})
 
-    print("before")
-    println(S)
+    #print("before")
+    #println(S)
     for i = 1:S.n
         download_margin = InputDict["download_margin"]
         DL_time_unit    = InputDict["DL_time_unit"]
@@ -307,8 +307,8 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
             S.t[i] = t_shifted
         end
     end
-    print("after")
-    println(S)
+    #print("after")
+    #println(S)
 end
 
 
