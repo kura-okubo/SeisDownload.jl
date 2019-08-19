@@ -138,7 +138,8 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 
 		push!(dlerror, Stemp.misc[1]["dlerror"])
 
-		#println([t_dl, t_write])
+		print("[dltime, wtime, fraction of writing]: ")
+		println([t_dl, t_write, t_write/(t_dl+t_write)])
     end
 
     return dlerror
