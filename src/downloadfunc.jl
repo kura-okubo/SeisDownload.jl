@@ -111,10 +111,14 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 
 		# downsample
 		if InputDict["savesamplefreq"] isa Number
-			println("resample")
-			SeisIO.resample!(Stemp, fs=float(InputDict["savesamplefreq"]))
+			for j = 1:Stemp.n
+				if Stemp.fs[j] > InputDict["savesamplefreq"]
+					#println("resample")
+					SeisIO.resample!(Stemp[j], fs=float(InputDict["savesamplefreq"]))
+				end
+			end
 		end
-		
+
 		ymd = split(starttimelist[startid], r"[A-Z]")
 		(y, m, d) = split(ymd[1], "-")
 		j = md2j(y, m, d)
