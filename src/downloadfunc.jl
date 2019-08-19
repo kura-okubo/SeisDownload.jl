@@ -283,14 +283,14 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
         si = findfirst(x -> tvec[x] >= download_margin, 1:length(tvec))
 
         #check if data is within request time window AND start time is equal to what is requested
-		println([si, download_margin * S.fs[i]])
-		println([string(u2d(S.t[i][1,2] * 1e-6))[1:19],starttime])
+		#println([si, download_margin * S.fs[i]])
+		#println([string(u2d(S.t[i][1,2] * 1e-6))[1:19],starttime])
         if si < download_margin * S.fs[i] || string(u2d(S.t[i][1,2] * 1e-6))[1:19] != starttime
-            println("data missing or starttime not match.")
+            #println("data missing or starttime not match.")
             S.misc[i]["dlerror"] = 1
             S.x[i] = zeros(0)
         else
-            println("manipulate")
+            #println("manipulate")
             ei = trunc(Int, min(si+tlen-1, S.t[i][end,1]))
             x_shifted = zeros(tlen)
             copyto!(x_shifted, S.x[i][si:ei])
