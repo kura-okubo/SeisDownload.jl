@@ -61,7 +61,7 @@ function seisdownload(InputDict::Dict)
 		#----Restrict number of processors------#
 		#NEVER CHANGE THIS THRESHOLD OTHERWISE IT OVERLOADS THE DATA SERVER
 		np = Sys.CPU_THREADS
-		if np > 32 throw(DomainError(np, "np must be smaller than 32.")) end
+		if np > 40 throw(DomainError(np, "np must be smaller than 32.")) end
 		#---------------------------------------#
 
         # Test download to evaluate use of memory and estimate download time.
