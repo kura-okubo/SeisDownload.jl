@@ -100,7 +100,6 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
     DownloadType    = InputDict["DownloadType"]
 
     trial_id          = 1
-    trial_sta         = 1
     InputDict_test = deepcopy(InputDict)
     test_suceededflag = false
     println("-------TEST DOWNLOAD START-----------")
@@ -109,9 +108,8 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
 
         while !test_suceededflag && trial_id < length(InputDict["starttimelist"])
             # select test request
-            for j = 1:length(InputDict["DLtimestamplist"])
-                stationlisttemp = [InputDict["stationinfo"]["stationlist"][trial_sta]]
-                InputDict_test["stationinfo"]["stationlist"] = [InputDict["stationinfo"]["stationlist"][trial_sta]]
+            for j = 1:length(InputDict["stationinfo"]["stationlist"])
+                InputDict_test["stationinfo"]["stationlist"] = [InputDict["stationinfo"]["stationlist"][j]]
 
                 global t1 = @elapsed global dlerror = seisdownload_NOISE(trial_id, InputDict_test) #[s]
 
@@ -128,8 +126,8 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
 
         while !test_suceededflag && trial_id < length(InputDict["starttimelist"])
             # select test request
-            for j = 1:length(InputDict["DLtimestamplist"])
-                InputDict_test["stationinfo"]["stationlist"] = InputDict["stationinfo"]["stationlist"][trial_sta]
+            for j = 1:length(InputDict["stationinfo"]["stationlist"])
+                InputDict_test["stationinfo"]["stationlist"] = InputDict["stationinfo"]["stationlist"][j]
 
                 global t1 = @elapsed global dlerror = seisdownload_EARTHQUAKE(trial_id, InputDict_test) #[s]
 
