@@ -72,7 +72,8 @@ function seisdownload(InputDict::Dict)
 		#---------------------------------------#
 
         # Test download to evaluate use of memory and estimate download time.
-		testdownload(InputDict, length(starttimelist))
+		InputDict_test = deepcopy(InputDict) # to avoid overwriting InputDict; unknown bug while deepcopying in testdownload function
+		testdownload(InputDict_test, length(starttimelist))
 
 		# Start downloading data
 		t_download = @elapsed pmap(x -> seisdownload_NOISE(x, InputDict), 1:length(starttimelist))

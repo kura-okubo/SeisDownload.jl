@@ -110,6 +110,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
         while !test_suceededflag && trial_id < length(InputDict["starttimelist"])
             # select test request
             for j = 1:length(InputDict["DLtimestamplist"])
+                stationlisttemp = [InputDict["stationinfo"]["stationlist"][trial_sta]]
                 InputDict_test["stationinfo"]["stationlist"] = [InputDict["stationinfo"]["stationlist"][trial_sta]]
 
                 global t1 = @elapsed global dlerror = seisdownload_NOISE(trial_id, InputDict_test) #[s]
