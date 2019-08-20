@@ -22,7 +22,7 @@ Download seismic data, removing instrumental response and saving into JLD2 file.
 - `startid`         : start time id in starttimelist
 - `InputDict::Dict` : dictionary which contains request information
 """
-function seisdownload_NOISE(startid, InputDict::Dict)
+function seisdownload_NOISE(startid, InputDict::Dict; testdownload::Bool=false)
 
     #stationlist
     stationlist     = InputDict["stationinfo"]["stationlist"]
@@ -50,8 +50,10 @@ function seisdownload_NOISE(startid, InputDict::Dict)
     starttimelist = InputDict["starttimelist"]
 
     #show progress
-    if starttimelist[startid][end-8:end] == "T00:00:00"
+    if starttimelist[startid][end-8:end] == "T00:00:00" && !testdownload
         println("start downloading $(starttimelist[startid])")
+	elseif testdownload
+		print(".")
     end
 
 	dlerror = []
@@ -93,53 +95,44 @@ function seisdownload_NOISE(startid, InputDict::Dict)
 			This may cause transient memory leak, so please track the memory usage." AllocatedMemory_GB=sizeof(Stemp)/1024/1024/1024
 		end
 
+		Isdataflag = false
 		# manipulate download_margin
-		if Stemp.misc[1]["dlerror"] != 1
-			manipulate_tmatrix!(Stemp, starttime, InputDict)
-			# for j = 1:Stemp.n
-			# 	marginidx = trunc(Int64, InputDict["download_margin"] * Stemp[j].fs)
-			# 	# check if data length is too short before removing margin
-			# 	if length(Stemp[j].x) > 2 * marginidx
-			# 		Stemp.x[j] = Stemp.x[j][marginidx+1:end-marginidx]
-			# 		Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
-			# 		Stemp.t[j][end,1] = length(Stemp.x[j])
-			# 	else
-			# 		#zero pad because this does not have so much data
-			# 		Stemp.x[j] = zeros(length(Stemp[j].x))
-			# 		Stemp.t[j][1,2] = Stemp.t[j][1,2] + float(InputDict["download_margin"])*1e6
-			# 		Stemp.t[j][end,1] = length(Stemp.x[j])
-			# 	end
-			# end
+		manipulate_tmatrix!(Stemp, starttime, InputDict)
 
-			# downsample
-			if InputDict["savesamplefreq"] isa Number
-				#make resample id list
-				resampleids = findall(x -> Stemp.fs[x]>InputDict["savesamplefreq"], 1:Stemp.n)
-				#println(resampleids)
-				if !isempty(resampleids)
-					SeisIO.resample!(Stemp, chans=resampleids, fs=float(InputDict["savesamplefreq"]))
+		for j = 1:Stemp.n
+			if Stemp.misc[j]["dlerror"] == 0
+				Isdataflag = true
+				# downsample
+				if InputDict["savesamplefreq"] isa Number
+					if Stemp.fs[j] > InputDict["savesamplefreq"]
+						SeisIO.resample!(Stemp, chans=j, fs=float(InputDict["savesamplefreq"]))
+					end
 				end
 			end
 		end
 
-		ymd = split(starttimelist[startid], r"[A-Z]")
-		(y, m, d) = split(ymd[1], "-")
-		j = md2j(y, m, d)
-		fname_out = join([String(y),
-					string(j),
-					replace(split(starttimelist[startid], 'T')[2], ':' => '.'),requeststr,
-					"FDSNWS",
-					src[i],"dat"],
-					'.')
+		# if some of SeisChannels in Stemp have a data, save temp file
+		if Isdataflag
+			ymd = split(starttimelist[startid], r"[A-Z]")
+			(y, m, d) = split(ymd[1], "-")
+			j = md2j(y, m, d)
+			fname_out = join([String(y),
+						string(j),
+						replace(split(starttimelist[startid], 'T')[2], ':' => '.'),requeststr,
+						"FDSNWS",
+						src[i],"dat"],
+						'.')
 
-		# save as intermediate binary file
-		t_write = @elapsed wseis(InputDict["tmppath"]*"/"*fname_out, Stemp)
+			# save as intermediate binary file
+			t_write = @elapsed wseis(InputDict["tmppath"]*"/"*fname_out, Stemp)
+		end
+
 
 		if InputDict["IsXMLfileRemoved"] && ispath("$requeststr.$startid.xml")
 			rm("$requeststr.$startid.xml")
 		end
 
-		push!(dlerror, Stemp.misc[1]["dlerror"])
+		push!(dlerror, !Isdataflag)
 
 		#print("[dltime, wtime, fraction of writing]: ")
 		#println([t_dl, t_write, t_write/(t_dl+t_write)])
@@ -200,7 +193,7 @@ function seisdownload_EARTHQUAKE(startid, InputDict::Dict)
 		end
 
 	    if Stemp.misc[1]["dlerror"] == 0 && InputDict["IsResponseRemove"]
-	        Remove_response_obspy.remove_response_obspy!(Stemp, "$requeststr.$startid.xml", pre_filt=pre_filt, zeropadlen = float(30*60), output="VEL")
+	        #Remove_response_obspy.remove_response_obspy!(Stemp, "$requeststr.$startid.xml", pre_filt=pre_filt, zeropadlen = float(30*60), output="VEL")
 			if InputDict["IsXMLfileRemoved"]
 				rm("$requeststr.$startid.xml")
 			else
@@ -244,13 +237,20 @@ function check_and_get_data(ex::Expr, requeststr::String)
 		#comment out below if you want to print contents of get_data()
 		#println(ex)
 		S = eval(ex);
+
 		for j = 1:S.n
-			S.misc[j]["dlerror"] = 0
+			if !isempty(S.x[j])
+				#download succeeded
+				S.misc[j]["dlerror"] = 0
+			else
+				S.misc[j]["dlerror"] = 1
+			end
 		end
+
 		return S
 
 	catch y
-		println(y)
+		#println(y)
 		S = SeisData(1)
 		S.misc[1]["dlerror"] = 1
 		S.id[1] = requeststr
@@ -272,6 +272,11 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
     #print("before")
     #println(S)
     for i = 1:S.n
+
+		if S.misc[i]["dlerror"] == 1
+			continue;
+		end
+
         download_margin = InputDict["download_margin"]
         DL_time_unit    = InputDict["DL_time_unit"]
         #requeststr = "NC.PLO..EHZ" #NC.PCC..EHZ
@@ -285,7 +290,9 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
         #check if data is within request time window AND start time is equal to what is requested
 		#println([si, download_margin * S.fs[i]])
 		#println([string(u2d(S.t[i][1,2] * 1e-6))[1:19],starttime])
-        if si < download_margin * S.fs[i] || string(u2d(S.t[i][1,2] * 1e-6))[1:19] != starttime
+		#rounding subsecond error in downloading
+		tsync = round(Int, S.t[i][1,2] * 1e-6) * 1e6
+        if si < download_margin * S.fs[i] || string(u2d(tsync * 1e-6))[1:19] != starttime
             #println("data missing or starttime not match.")
             S.misc[i]["dlerror"] = 1
             S.x[i] = zeros(0)

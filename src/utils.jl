@@ -111,7 +111,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
             for j = 1:length(InputDict["stationinfo"]["stationlist"])
                 InputDict_test["stationinfo"]["stationlist"] = [InputDict["stationinfo"]["stationlist"][j]]
 
-                global t1 = @elapsed global dlerror = seisdownload_NOISE(trial_id, InputDict_test) #[s]
+                global t1 = @elapsed global dlerror = seisdownload_NOISE(trial_id, InputDict_test, testdownload=true) #[s]
 
                 dl = [dlerror[i] for i in 1:length(dlerror)]
                 if issubset(0, dl)
@@ -158,7 +158,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
     s = read(`du -s -k $tmppath`, String)
     hdduse = parse(Int, split(s)[1])
 
-    totaldownloadsize = hdduse * numofitr
+    totaldownloadsize = hdduse * numofitr * length(InputDict["stationinfo"]["stationlist"])
     if totaldownloadsize < 1024 * 1024 # less than 1 GB
         totaldownloadsize = totaldownloadsize / 1024 #[MB]
         sizeunit = "MB"
