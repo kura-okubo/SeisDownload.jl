@@ -292,7 +292,13 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
 		#println([string(u2d(S.t[i][1,2] * 1e-6))[1:19],starttime])
 		#rounding subsecond error in downloading
 		tsync = round(Int, S.t[i][1,2] * 1e-6) * 1e6
-        if si < download_margin * S.fs[i] || string(u2d(tsync * 1e-6))[1:19] != starttime
+
+		if isnothing(si)
+			#downloaded data is only within margin; nodata in the requested time window
+			S.misc[i]["dlerror"] = 1
+            S.x[i] = zeros(0)
+
+        elseif si < download_margin * S.fs[i] || string(u2d(tsync * 1e-6))[1:19] != starttime
             #println("data missing or starttime not match.")
             S.misc[i]["dlerror"] = 1
             S.x[i] = zeros(0)
