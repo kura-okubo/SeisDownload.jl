@@ -34,7 +34,14 @@ function seisdownload(InputDict::Dict)
 
 	DownloadType    = InputDict["DownloadType"]
 
-	mkpath("./seisdownload_tmp")
+	fodir = ""
+	sp = splitpath(InputDict["fopath"])
+	for i = 1:length(sp)-1
+		fodir = joinpath(fodir, sp[i])
+	end
+	tmppath = joinpath(fodir, "./seisdownload_tmp")
+	InputDict["tmppath"] = tmppath
+	mkpath(tmppath)
 
     if DownloadType == "Noise" || DownloadType == "noise"
 
@@ -61,11 +68,12 @@ function seisdownload(InputDict::Dict)
 		#----Restrict number of processors------#
 		#NEVER CHANGE THIS THRESHOLD OTHERWISE IT OVERLOADS THE DATA SERVER
 		np = Sys.CPU_THREADS
-		if np > 32 throw(DomainError(np, "np must be smaller than 32.")) end
+		if np > 40 throw(DomainError(np, "np must be smaller than 32.")) end
 		#---------------------------------------#
 
         # Test download to evaluate use of memory and estimate download time.
-		testdownload(InputDict, length(starttimelist))
+		InputDict_test = deepcopy(InputDict) # to avoid overwriting InputDict; unknown bug while deepcopying in testdownload function
+		testdownload(InputDict_test, length(starttimelist))
 
 		# Start downloading data
 		t_download = @elapsed pmap(x -> seisdownload_NOISE(x, InputDict), 1:length(starttimelist))
@@ -78,7 +86,7 @@ function seisdownload(InputDict::Dict)
 		println(@sprintf("Total convert time:%8.4f[s]", t_convert))
 
 		if !InputDict["Istmpfilepreserved"]
-			rm("./seisdownload_tmp", recursive=true, force=true)
+			rm(tmppath, recursive=true, force=true)
 		end
 
     elseif  DownloadType == "Earthquake" || DownloadType == "earthquake"
