@@ -34,7 +34,11 @@ function seisdownload_NOISE(startid, InputDict::Dict; testdownload::Bool=false)
 
 	#SeisIO getdata option
 	if !haskey(InputDict, "get_data_opt")
-		InputDict["get_data_opt"] = [true, true, true, true, false]#: [unscale, demean, detrend, taper, ungap]
+		if InputDict["IsResponseRemove"]
+			InputDict["get_data_opt"] = [true, false, false, false, false]#: [unscale, demean, detrend, taper, ungap]
+		else
+			InputDict["get_data_opt"] = [false, false, false, false, false]#: [unscale, demean, detrend, taper, ungap]
+		end
 	end
 
 	if !haskey(InputDict, "savesamplefreq")

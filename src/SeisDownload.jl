@@ -30,6 +30,16 @@ function seisdownload(InputDict::Dict)
 
     Utils.initlogo()
 
+	println("==========================\n
+SeisIO.jl: Evaluation of Download efficiency version\n
+Checked out to the git branch 'SeisIO_DLTest'\n
+- skip test download
+- turn off prefiltering, [unscale = false, demean = false, detrend = false, taper = false, ungap = false, rr = false]
+- if removing resp, [unscale = true, demean = false, detrend = false, taper = false, ungap = false, rr = true]
+- output in binary format with wseis
+- not convert to JLD2
+==========================\n")
+
 	printparams(InputDict)
 
 	DownloadType    = InputDict["DownloadType"]
@@ -73,21 +83,23 @@ function seisdownload(InputDict::Dict)
 
         # Test download to evaluate use of memory and estimate download time.
 		InputDict_test = deepcopy(InputDict) # to avoid overwriting InputDict; unknown bug while deepcopying in testdownload function
-		testdownload(InputDict_test, length(starttimelist))
+
+		#testdownload(InputDict_test, length(starttimelist))
 
 		# Start downloading data
 		t_download = @elapsed pmap(x -> seisdownload_NOISE(x, InputDict), 1:length(starttimelist))
 
 		# convert intermediate file to prescibed file format (JLD2, ASDF, ...)
-		t_convert = @elapsed convert_tmpfile(InputDict)
+		#t_convert = @elapsed convert_tmpfile(InputDict)
+		t_convert = 0.0
 
 		println("---Summary of computational time---")
 		println(@sprintf("Total download time:%8.4f[s]", t_download))
 		println(@sprintf("Total convert time:%8.4f[s]", t_convert))
 
-		if !InputDict["Istmpfilepreserved"]
-			rm(tmppath, recursive=true, force=true)
-		end
+		# if !InputDict["Istmpfilepreserved"]
+		# 	rm(tmppath, recursive=true, force=true)
+		# end
 
     elseif  DownloadType == "Earthquake" || DownloadType == "earthquake"
 
