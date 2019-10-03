@@ -77,7 +77,7 @@ Checked out to the git branch 'SeisIO_DLTest'\n
 
 		#----Restrict number of processors------#
 		#NEVER CHANGE THIS THRESHOLD OTHERWISE IT OVERLOADS THE DATA SERVER
-		np = Sys.CPU_THREADS
+		np = nprocs()-1
 		if np > 40 throw(DomainError(np, "np must be smaller than 32.")) end
 		#---------------------------------------#
 
