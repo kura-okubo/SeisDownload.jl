@@ -78,7 +78,7 @@ function seisdownload_NOISE(startid, InputDict::Dict; testdownload::Bool=false)
 		if InputDict["IsLocationBox"]
 
 	        ex = :(get_data($(method[i]), $(requeststr), s=$(starttime), t=$(dltime), reg=$(InputDict["reg"]),
-			 v=$(0), src=$(src[i]), xf=$("$requeststr.$startid.xml"), unscale=$(InputDict["get_data_opt"][1]),
+			 v=$(0), src=$(src[i]), xf=$("$requeststr.$startid.xml"), unscale=$(InputDict["get_data_opt"][1]), w=true,
 			  demean=$(InputDict["get_data_opt"][2]), detrend=$(InputDict["get_data_opt"][3]),taper=$(InputDict["get_data_opt"][4]),
 			  ungap=$(InputDict["get_data_opt"][5]), rr=$(InputDict["IsResponseRemove"])))
 
@@ -86,7 +86,7 @@ function seisdownload_NOISE(startid, InputDict::Dict; testdownload::Bool=false)
 		else
 
 			ex = :(get_data($(method[i]), $(requeststr), s=$(starttime), t=$(dltime),
-			 v=$(0), src=$(src[i]), xf=$("$requeststr.$startid.xml"),unscale=$(InputDict["get_data_opt"][1]),
+			 v=$(0), src=$(src[i]), xf=$("$requeststr.$startid.xml"),unscale=$(InputDict["get_data_opt"][1]), w=true,
 			  demean=$(InputDict["get_data_opt"][2]), detrend=$(InputDict["get_data_opt"][3]),taper=$(InputDict["get_data_opt"][4]),
 			  ungap=$(InputDict["get_data_opt"][5]), rr=$(InputDict["IsResponseRemove"])))
 
@@ -94,49 +94,50 @@ function seisdownload_NOISE(startid, InputDict::Dict; testdownload::Bool=false)
 		end
 
 		# Check maximum memory allocation
-		if sizeof(Stemp)/1024/1024/1024 > InputDict["MAX_MEM_PER_CPU"]
-			@warn "maximam allocation of memory per cpu exceeds predescribed MAX_MEM_PER_CPU.
-			This may cause transient memory leak, so please track the memory usage." AllocatedMemory_GB=sizeof(Stemp)/1024/1024/1024
-		end
+		# if sizeof(Stemp)/1024/1024/1024 > InputDict["MAX_MEM_PER_CPU"]
+		# 	@warn "maximam allocation of memory per cpu exceeds predescribed MAX_MEM_PER_CPU.
+		# 	This may cause transient memory leak, so please track the memory usage." AllocatedMemory_GB=sizeof(Stemp)/1024/1024/1024
+		# end
 
-		Isdataflag = false
+		#Isdataflag = false
 		# manipulate download_margin
-		manipulate_tmatrix!(Stemp, starttime, InputDict)
 
-		for j = 1:Stemp.n
-			if Stemp.misc[j]["dlerror"] == 0
-				Isdataflag = true
-				# downsample
-				if InputDict["savesamplefreq"] isa Number
-					if Stemp.fs[j] > InputDict["savesamplefreq"]
-						SeisIO.resample!(Stemp, chans=j, fs=float(InputDict["savesamplefreq"]))
-					end
-				end
-			end
-		end
+		# manipulate_tmatrix!(Stemp, starttime, InputDict)
+
+		# for j = 1:Stemp.n
+		# 	if Stemp.misc[j]["dlerror"] == 0
+		# 		Isdataflag = true
+		# 		# downsample
+		# 		if InputDict["savesamplefreq"] isa Number
+		# 			if Stemp.fs[j] > InputDict["savesamplefreq"]
+		# 				SeisIO.resample!(Stemp, chans=j, fs=float(InputDict["savesamplefreq"]))
+		# 			end
+		# 		end
+		# 	end
+		# end
 
 		# if some of SeisChannels in Stemp have a data, save temp file
-		if Isdataflag
-			ymd = split(starttimelist[startid], r"[A-Z]")
-			(y, m, d) = split(ymd[1], "-")
-			j = md2j(y, m, d)
-			fname_out = join([String(y),
-						string(j),
-						replace(split(starttimelist[startid], 'T')[2], ':' => '.'),requeststr,
-						"FDSNWS",
-						src[i],"dat"],
-						'.')
-
-			# save as intermediate binary file
-			t_write = @elapsed wseis(InputDict["tmppath"]*"/"*fname_out, Stemp)
-		end
+		# if Isdataflag
+		# 	ymd = split(starttimelist[startid], r"[A-Z]")
+		# 	(y, m, d) = split(ymd[1], "-")
+		# 	j = md2j(y, m, d)
+		# 	fname_out = join([String(y),
+		# 				string(j),
+		# 				replace(split(starttimelist[startid], 'T')[2], ':' => '.'),requeststr,
+		# 				"FDSNWS",
+		# 				src[i],"dat"],
+		# 				'.')
+		#
+		# 	# save as intermediate binary file
+		# 	t_write = @elapsed wseis(InputDict["tmppath"]*"/"*fname_out, Stemp)
+		# end
 
 
 		if InputDict["IsXMLfileRemoved"] && ispath("$requeststr.$startid.xml")
 			rm("$requeststr.$startid.xml")
 		end
 
-		push!(dlerror, !Isdataflag)
+		#push!(dlerror, !Isdataflag)
 
 		#print("[dltime, wtime, fraction of writing]: ")
 		#println([t_dl, t_write, t_write/(t_dl+t_write)])
