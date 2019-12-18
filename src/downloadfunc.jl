@@ -34,7 +34,7 @@ function seisdownload_NOISE(startid, InputDict::Dict; testdownload::Bool=false)
 
 	#SeisIO getdata option
 	if !haskey(InputDict, "get_data_opt")
-		InputDict["get_data_opt"] = [true, true, true, true, false]#: [unscale, demean, detrend, taper, ungap]
+		InputDict["get_data_opt"] = [true, true, true, true, true]#: [unscale, demean, detrend, taper, ungap]
 	end
 
 	if !haskey(InputDict, "savesamplefreq")
@@ -233,30 +233,35 @@ Download seismic data, removing instrumental response and saving into JLD2 file.
 - `requeststr::String`     : request channel (e.g. "BP.LCCB..BP1")
 """
 function check_and_get_data(ex::Expr, requeststr::String)
-	try
-		#comment out below if you want to print contents of get_data()
-		#println(ex)
-		S = eval(ex);
 
+	max_request_trial = 3 # number of trial request for downloading data from server
+
+	for it = 1:max_request_trial
+		# println(ex)
+		S = eval(ex);
+		# println(S)
 		for j = 1:S.n
 			if !isempty(S.x[j])
 				#download succeeded
 				S.misc[j]["dlerror"] = 0
+				return S
 			else
+				println("trial "*string(it)*"failed: continue to try")
 				S.misc[j]["dlerror"] = 1
+				S.id[1] = requeststr
+				note!(S, 1, "station is not available for this request.")
 			end
 		end
-
-		return S
-
-	catch y
-		#println(y)
-		S = SeisData(1)
-		S.misc[1]["dlerror"] = 1
-		S.id[1] = requeststr
-		note!(S, 1, "station is not available for this request.")
-		return S
 	end
+
+	# donwload is failed after max_request_trial
+	# S.misc[j]["dlerror"] = 1
+	# S.id[1] = requeststr
+	# note!(S, 1, "station is not available for this request.")
+
+	return S
+
+
 end
 
 
@@ -311,7 +316,7 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
             # manipulate time matrix
             t_shifted = deepcopy(hcat(S.t[i][:,1] .- (si-1), S.t[i][:,2]))
             # remove gap outside of time window
-            ri = findall(x -> t_shifted[x, 1] < 1 || t_shifted[x, 1] >  tlen, 1:size(t_shifted, 1))
+            ri = findall(x -> t_shifted[x, 1] <= 1 || t_shifted[x, 1] >= tlen, 1:size(t_shifted, 1))
             t_shifted = t_shifted[setdiff(1:end, ri), :]
             t_init = [1 trunc(Int, S.t[i][1,2] + float(download_margin)*1e6)]
             t_last = [tlen 0]

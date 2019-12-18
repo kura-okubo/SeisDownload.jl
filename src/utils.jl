@@ -245,7 +245,8 @@ function convert_tmpfile(InputDict::Dict; salvage::Bool=false)
                         # @info "save data $varname"
 
                     elseif fmt == "ASDF"
-                        write_hdf5(fopath, S[ii])
+
+                        write_hdf5(fopath, S[ii], add=true)
 
                     else
                         error("output format in $fmt is not implemented yet.")
