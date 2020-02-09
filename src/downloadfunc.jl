@@ -34,7 +34,7 @@ function seisdownload_NOISE(startid, InputDict::Dict; testdownload::Bool=false)
 
 	#SeisIO getdata option
 	if !haskey(InputDict, "get_data_opt")
-		InputDict["get_data_opt"] = [true, true, true, true, false]#: [unscale, demean, detrend, taper, ungap]
+		InputDict["get_data_opt"] = [true, true, true, true, true]#: [unscale, demean, detrend, taper, ungap]
 	end
 
 	if !haskey(InputDict, "savesamplefreq")
@@ -282,15 +282,29 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
         #requeststr = "NC.PLO..EHZ" #NC.PCC..EHZ
         requeststr = S.id[i] #NC.PCC..EHZ
 
+		# NOTE: 2020/2/8
+		# We decided to use data ungap to avoid data inconsitency
+		# due to data gap and time shift.
+		if size(S.t[i], 1) > 2
+			warning("ungap! is not applied yet to SeisData, which may cause
+			data inconsistency. So applying ungap.")
+			ungap!(S[i])
+		end
+
         tvec = collect(0:S.t[i][end,1]-1) ./ S.fs[i]
         tlen = trunc(Int, DL_time_unit * S.fs[i])
 
         si = findfirst(x -> tvec[x] >= download_margin, 1:length(tvec))
 
-        #check if data is within request time window AND start time is equal to what is requested
 		#println([si, download_margin * S.fs[i]])
 		#println([string(u2d(S.t[i][1,2] * 1e-6))[1:19],starttime])
-		#rounding subsecond error in downloading
+		# check if data is within request time window AND start time is equal
+		# at the order of second to what is requested
+		# rounding subsecond error in downloading
+		# NOTE: thie is just used to check the consistency between requested
+		# time and truncated time;
+		# SeisNoise.phase_shift! is applied when seisxcorr is performed.
+
 		tsync = round(Int, S.t[i][1,2] * 1e-6) * 1e6
 
 		if isnothing(si)
@@ -304,20 +318,28 @@ function manipulate_tmatrix!(S::SeisData, starttime::String, InputDict::Dict{Str
             S.x[i] = zeros(0)
         else
             #println("manipulate")
+			#===
+			Shift time index of si:
+			|--------|----------------------------------------|--------|
+			  margin              requested data (tlen)         margin
+			        [si]                                 [si]+tlen-1
+
+			===#
             ei = trunc(Int, min(si+tlen-1, S.t[i][end,1]))
             x_shifted = zeros(tlen)
             copyto!(x_shifted, S.x[i][si:ei])
 
-            # manipulate time matrix
-            t_shifted = deepcopy(hcat(S.t[i][:,1] .- (si-1), S.t[i][:,2]))
-            # remove gap outside of time window
-            ri = findall(x -> t_shifted[x, 1] < 1 || t_shifted[x, 1] >  tlen, 1:size(t_shifted, 1))
-            t_shifted = t_shifted[setdiff(1:end, ri), :]
-            t_init = [1 trunc(Int, S.t[i][1,2] + float(download_margin)*1e6)]
-            t_last = [tlen 0]
-            t_shifted = vcat(t_init, t_shifted, t_last)
-            S.x[i] = x_shifted
-            S.t[i] = t_shifted
+			# # manipulate time matrix
+			# t_shifted = deepcopy(hcat(S.t[i][:,1] .- (si-1), S.t[i][:,2]))
+			# # remove gap outside of time window
+			# ri = findall(x -> t_shifted[x, 1] < 1 || t_shifted[x, 1] >  tlen, 1:size(t_shifted, 1))
+			# t_shifted = t_shifted[setdiff(1:end, ri), :]
+			t_init = [1 trunc(Int, S.t[i][1,2] + float(download_margin)*1e6)]
+			t_last = [tlen 0]
+			t_shifted = vcat(t_init, t_last)
+			S.x[i] = x_shifted
+			S.t[i] = t_shifted
+
         end
     end
     #print("after")
