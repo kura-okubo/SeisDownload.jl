@@ -145,7 +145,7 @@ function testdownload(InputDict::Dict{String,Any}, numofitr::Int64)
         error("All requests you submitted with input dictionary was failed. Please check the station availability in your request.")
     end
 
-    estimated_downloadtime = now() + Second(round(3 * t1 * length(InputDict["DLtimestamplist"]) * numofitr / nprocs()))
+    estimated_downloadtime = now() + Second(round(1.0 * t1 * length(InputDict["DLtimestamplist"]) * numofitr / nprocs()))
 
     #println(mem_per_requestid)
     #println(max_num_of_processes_per_parallelcycle)
