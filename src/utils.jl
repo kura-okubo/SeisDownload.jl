@@ -190,10 +190,10 @@ function convert_tmpfile(InputDict::Dict; salvage::Bool=false)
     fopath = InputDict["fopath"]
     fmt = InputDict["outputformat"]
 
-    file = jldopen(fopath, "w")
 
     #save HEADER information
     if fmt == "JLD2"
+        file = jldopen(fopath, "w")
         file["info/DLtimestamplist"] = InputDict["DLtimestamplist"];
         file["info/starttime"]       = InputDict["starttime"]
         file["info/endtime"]         = InputDict["endtime"]
@@ -243,6 +243,10 @@ function convert_tmpfile(InputDict::Dict; salvage::Bool=false)
                             file[varname] = S[ii]
                         end
                         # @info "save data $varname"
+
+                    elseif fmt == "ASDF"
+                        write_hdf5(fopath, S[ii])
+
                     else
                         error("output format in $fmt is not implemented yet.")
                     end
@@ -262,9 +266,9 @@ function convert_tmpfile(InputDict::Dict; salvage::Bool=false)
     if fmt == "JLD2"
         # save final station list
         file["info/stationlist"] = stationlist
+        JLD2.close(file)
     end
 
-    JLD2.close(file)
 
     return nothing
 end
